@@ -1,9 +1,9 @@
 import React from 'react';
 
-export default function Notes() {
+export default function Chats() {
     return (
         <div>
-            Notes page
+            Chats page
         </div>
     )
 }

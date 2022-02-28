@@ -1,9 +1,9 @@
 import React from 'react';
 
-export default function Create() {
+export default function Reflections() {
     return (
         <div>
-            Create page
+            Reflections page
         </div>
     )
 }
