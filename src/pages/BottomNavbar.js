@@ -3,25 +3,14 @@ import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
-import RestoreIcon from '@mui/icons-material/Restore';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import ArchiveIcon from '@mui/icons-material/Archive';
+import AddTaskIcon from '@mui/icons-material/AddTask';
+import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
+import AssignmentOutlinedIcon from '@mui/icons-material/AssignmentOutlined';
+import ContentCopyOutlinedIcon from '@mui/icons-material/ContentCopyOutlined';
+import TipsAndUpdatesOutlinedIcon from '@mui/icons-material/TipsAndUpdatesOutlined';
 import Paper from '@mui/material/Paper';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
-import ListItemText from '@mui/material/ListItemText';
-import Avatar from '@mui/material/Avatar';
 import { makeStyles } from '@mui/styles';
-import { Link } from 'react-router-dom';
-
-// function refreshMessages() {
-//     const getRandomInt = (max) => Math.floor(Math.random() * Math.floor(max));
-
-//     return Array.from(new Array(50)).map(
-//         () => messageExamples[getRandomInt(messageExamples.length)],
-//     );
-// }
+import { Link as RouterLink, useLocation } from 'react-router-dom';
 
 const useStyles = makeStyles({
     root: {
@@ -37,95 +26,45 @@ const useStyles = makeStyles({
     }
 });
 
+const LinkBehavior = React.forwardRef((props, ref) => (
+    <RouterLink ref={ref} to="/" {...props} />
+));
+
+function linkScreenToPath(routeName) {
+    routeName = routeName.split("/")[1];
+    if ("tasks" === routeName) return 0;
+    else if ("chats" === routeName) return 1;
+    else if ("summary" === routeName) return 2;
+    else if ("charters" === routeName) return 3;
+    else if ("reflections" === routeName) return 4;
+    else return -1;
+}
+
 export default function FixedBottomNavigation() {
-    const [value, setValue] = React.useState(2);
+    const pathname = useLocation().pathname;
+    const [value, setValue] = React.useState(linkScreenToPath(pathname));
+
     const ref = React.useRef(null);
-    // const [messages, setMessages] = React.useState(() => refreshMessages());
 
     const classes = useStyles();
-
-    // React.useEffect(() => {
-    //     ref.current.ownerDocument.body.scrollTop = 0;
-    //     setMessages(refreshMessages());
-    // }, [value, setMessages]);
-
-    // const handleChange = (event, newValue) => {
-    //     setValue(newValue)
-    // }
 
     return (
         <Box sx={{ pb: 7 }} ref={ref}>
             <CssBaseline />
-            {/* <List>
-                {messages.map(({ primary, secondary, person }, index) => (
-                    <ListItem button key={index + person}>
-                        <ListItemAvatar>
-                            <Avatar alt="Profile Picture" src={person} />
-                        </ListItemAvatar>
-                        <ListItemText primary={primary} secondary={secondary} />
-                    </ListItem>
-                ))}
-            </List> */}
             <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }} elevation={3}>
                 <BottomNavigation
                     showLabels
                     value={value}
-                    onChange={(event, newValue) => {
-                        console.log("newValue", newValue);
-                        setValue(newValue);
-                    }}
+                    onChange={(event, newValue) => setValue(newValue)}
                     className={classes.root}
                 >
-                    {/* TODO: setup route (i.e. href="/create") */}
-                    <BottomNavigationAction label="Archive" icon={<ArchiveIcon />} />
-                    <BottomNavigationAction label="Archive" icon={<ArchiveIcon />} />
-                    <BottomNavigationAction label="Archive" icon={<ArchiveIcon />} />
-                    <BottomNavigationAction label="Archive" icon={<ArchiveIcon />} />
-                    <BottomNavigationAction label="Archive" icon={<ArchiveIcon />} />
+                    <BottomNavigationAction label="ToDo" icon={<AddTaskIcon />} component={RouterLink} to="/tasks" />
+                    <BottomNavigationAction label="Chat" icon={<ChatBubbleOutlineOutlinedIcon />} component={RouterLink} to="/chats" />
+                    <BottomNavigationAction label="Summary" icon={<AssignmentOutlinedIcon />} component={RouterLink} to="/summary" />
+                    <BottomNavigationAction label="Charters" icon={<ContentCopyOutlinedIcon />} component={RouterLink} to="/charters" />
+                    <BottomNavigationAction label="Reflection" icon={<TipsAndUpdatesOutlinedIcon />} component={RouterLink} to="/reflections" />
                 </BottomNavigation>
             </Paper>
         </Box >
     );
 }
-
-// const messageExamples = [
-//     {
-//         primary: 'Brunch this week?',
-//         secondary: "I'll be in the neighbourhood this week. Let's grab a bite to eat",
-//         person: '/static/images/avatar/5.jpg',
-//     },
-//     {
-//         primary: 'Birthday Gift',
-//         secondary: `Do you have a suggestion for a good present for John on his work
-//       anniversary. I am really confused & would love your thoughts on it.`,
-//         person: '/static/images/avatar/1.jpg',
-//     },
-//     {
-//         primary: 'Recipe to try',
-//         secondary: 'I am try out this new BBQ recipe, I think this might be amazing',
-//         person: '/static/images/avatar/2.jpg',
-//     },
-//     {
-//         primary: 'Yes!',
-//         secondary: 'I have the tickets to the ReactConf for this year.',
-//         person: '/static/images/avatar/3.jpg',
-//     },
-//     {
-//         primary: "Doctor's Appointment",
-//         secondary: 'My appointment for the doctor was rescheduled for next Saturday.',
-//         person: '/static/images/avatar/4.jpg',
-//     },
-//     {
-//         primary: 'Discussion',
-//         secondary: `Menus that are generated by the bottom app bar (such as a bottom
-//       navigation drawer or overflow menu) open as bottom sheets at a higher elevation
-//       than the bar.`,
-//         person: '/static/images/avatar/5.jpg',
-//     },
-//     {
-//         primary: 'Summer BBQ',
-//         secondary: `Who wants to have a cookout this weekend? I just got some furniture
-//       for my backyard and would love to fire up the grill.`,
-//         person: '/static/images/avatar/1.jpg',
-//     },
-// ];
