@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 import Checkbox from '@mui/material/Checkbox';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 
-export default function TodoItem({ todo }) {
+export default function TodoItem({ todo, handleStatus }) {
     return (
         <Card key={todo.key}
             sx={{
@@ -20,6 +20,7 @@ export default function TodoItem({ todo }) {
                         <Checkbox
                             tabIndex={-1}
                             disableRipple
+                            onChange={e => { callback(todo) }}
                         />
                     </CardActions>
                 </Grid>
