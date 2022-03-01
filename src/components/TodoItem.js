@@ -20,7 +20,7 @@ export default function TodoItem({ todo, handleStatus }) {
                         <Checkbox
                             tabIndex={-1}
                             disableRipple
-                            onChange={e => { callback(todo) }}
+                            onChange={e => { handleStatus(todo) }}
                         />
                     </CardActions>
                 </Grid>
