@@ -1,6 +1,7 @@
 import React from 'react';
 import HeaderBar from '../components/HeaderBar';
 import BottomNavBar from '../components/BottomNavbar';
+import CharterList from '../components/CharterList';
 
 
 export default function Charters() {
@@ -8,6 +9,8 @@ export default function Charters() {
         <div>
             <HeaderBar />
             Charters page
+            {/* TODO: team pictures (horizontal scroll) */}
+            <CharterList />
             <BottomNavBar />
         </div>
     )
