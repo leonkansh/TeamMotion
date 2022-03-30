@@ -78,12 +78,12 @@ export default function TodoItem({ todo, handleStatus }) {
                     </CardContent>
                 </Grid>
 
-                <Grid item>
+                <Grid item sx={{ position: 'absolute', right: 10 }}>
                     <CardActions>
                         {<React.Fragment key='bottom-drawer-frag'>
                             <MoreVertIcon onClick={toggleDrawer(true)} />
                             <Drawer
-                                anchor='bottom-drawer'
+                                anchor='bottom'
                                 open={state}
                                 onClose={toggleDrawer(false)}
                             >
