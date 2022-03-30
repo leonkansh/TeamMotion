@@ -3,7 +3,7 @@ import HeaderBar from '../components/HeaderBar';
 import BottomNavBar from '../components/BottomNavbar';
 import TodoList from '../components/TodoList';
 import AssignmentList from '../components/AssignmentList';
-import AddTodoButton from '../components/AddTodoButton';
+import AddButton from '../components/AddButton';
 
 // retrieve assignments pass into assignments and todos as props
 
@@ -12,6 +12,8 @@ export default function Tasks() {
     // setID, pass as callback into AssignmentList
     // pass useEffect into TodoList (render when new assignment) OR useEffect passes new todos into <TodoList />?
     /** parse before pass */
+    const todoPath = "/tasks/create-todo";
+
     return (
         <div>
             <HeaderBar />
@@ -25,7 +27,7 @@ export default function Tasks() {
             {/* pass useEffect into TodoList (render when new assignment) OR useEffect passes new todos into <TodoList />? */}
             <TodoList />
 
-            <AddTodoButton />
+            <AddButton path={todoPath} />
             <BottomNavBar />
         </div>
     )

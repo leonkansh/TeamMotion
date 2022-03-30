@@ -7,7 +7,7 @@ const LinkBehavior = React.forwardRef((props, ref) => (
     <RouterLink ref={ref} to="/" {...props} />
 ));
 
-export default function AddTodoButton() {
+export default function AddButton(props) {
     return (
         <Fab
             color="primary"
@@ -19,7 +19,7 @@ export default function AddTodoButton() {
                 fontSize: 60
             }}
             component={RouterLink}
-            to="/tasks/create-todo"
+            to={props.path}
         >
             <AddIcon />
         </Fab>
