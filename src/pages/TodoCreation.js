@@ -7,7 +7,7 @@ import Input from '@mui/material/Input';
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
 import Button from '@mui/material/Button';
-import BottomNavBar from '../components/BottomNavbar';
+import BottomNavBar from '../components/nav/BottomNavbar';
 
 // TODO: get assignment list : names & due dates
 // TODO: get team member list : names

@@ -1,9 +1,9 @@
 import React from 'react';
-import HeaderBar from '../components/HeaderBar';
-import BottomNavBar from '../components/BottomNavbar';
-import TodoList from '../components/TodoList';
-import AssignmentList from '../components/AssignmentList';
-import AddButton from '../components/AddButton';
+import HeaderBar from '../components/nav/HeaderBar';
+import BottomNavBar from '../components/nav/BottomNavbar';
+import TodoList from '../components/tasks-page/TodoList';
+import AssignmentList from '../components/tasks-page/AssignmentList';
+import AddButton from '../components/common/AddButton';
 
 // retrieve assignments pass into assignments and todos as props
 

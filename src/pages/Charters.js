@@ -1,7 +1,7 @@
 import React from 'react';
-import HeaderBar from '../components/HeaderBar';
-import BottomNavBar from '../components/BottomNavbar';
-import CharterList from '../components/CharterList';
+import HeaderBar from '../components/nav/HeaderBar';
+import BottomNavBar from '../components/nav/BottomNavbar';
+import CharterList from '../components/charters-page/CharterList';
 
 
 export default function Charters() {

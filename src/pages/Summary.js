@@ -1,6 +1,6 @@
 import React from 'react';
-import HeaderBar from '../components/HeaderBar';
-import BottomNavBar from '../components/BottomNavbar';
+import HeaderBar from '../components/nav/HeaderBar';
+import BottomNavBar from '../components/nav/BottomNavbar';
 export default function Summary() {
     return (
         <div>
