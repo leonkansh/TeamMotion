@@ -20,7 +20,7 @@ export default function AssignmentList() {
                 >
                     {
                         value.data.map(assignment => {
-                            return (<AssignmentCard assignment={assignment} />)
+                            return (<AssignmentCard assignment={assignment} setAssignmentId={value.setAssignmentId} />)
                         })
                     }
                 </Box>

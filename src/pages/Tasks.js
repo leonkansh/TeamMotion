@@ -25,7 +25,7 @@ export default function Tasks() {
         <div>
             <HeaderBar />
             {/* TODO: pass down set functions */}
-            <AssignmentContext.Provider value={{ data, assignment_id, todo_list }}>
+            <AssignmentContext.Provider value={{ data, assignment_id, setAssignmentId, todo_list }}>
                 <AssignmentList />
                 <TodoList />
             </AssignmentContext.Provider>

@@ -27,7 +27,7 @@ const selectedStyle = {
  * takes an Assignment object to parse assignment name, due date, lead name
  * @returns display a card that holds the parsed information
  */
-export default function AssignmentCard({ assignment }) {
+export default function AssignmentCard({ assignment, setAssignmentId }) {
     const [style, setStyle] = useState(unselectedStyle);
 
     return (
@@ -38,7 +38,7 @@ export default function AssignmentCard({ assignment }) {
             onClick={event => {
                 console.log("is clicked!");
                 setStyle(selectedStyle);
-                // TODO: setCurrentAssignment name in List scope
+                setAssignmentId(assignment._id);
             }}
         >
 
