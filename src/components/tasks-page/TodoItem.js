@@ -12,7 +12,9 @@ import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 
-export default function TodoItem({ todo, handleStatus }) {
+// export default function TodoItem({ todo, handleStatus }) {
+export default function TodoItem({ todo }) {
+
     const [state, setState] = React.useState(false);
 
     const toggleDrawer = (open) => (event) => {
@@ -48,7 +50,7 @@ export default function TodoItem({ todo, handleStatus }) {
     );
 
     return (
-        <Card key={todo.key}
+        <Card
             sx={{
                 minWidth: 275
             }}>
@@ -59,21 +61,23 @@ export default function TodoItem({ todo, handleStatus }) {
                         <Checkbox
                             tabIndex={-1}
                             disableRipple
-                            onChange={e => { handleStatus(todo) }}
+                        // TODO: call set function
+                        // onChange={e => { handleStatus(todo) }}
                         />
+                        {/* TODO: update assignment context */}
                     </CardActions>
                 </Grid>
 
                 <Grid item>
                     <CardContent>
                         <Typography variant="h5" component="div">
-                            {todo.name}
+                            {todo.content}
                         </Typography>
                         <Typography variant="h7" component="div">
-                            {todo.date}
+                            date: {todo.date}
                         </Typography>
                         <Typography variant="h7" component="div">
-                            {todo.assignee}
+                            assignee: {todo.userid.name}
                         </Typography>
                     </CardContent>
                 </Grid>

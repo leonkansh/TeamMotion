@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react";
+import { AssignmentContext } from "../../pages/AssignmentContext";
 import TodoItem from "./TodoItem";
+import { Grid } from '@mui/material';
+
 
 /**
  * Takes assignmentid as input props
@@ -7,43 +10,33 @@ import TodoItem from "./TodoItem";
  * @returns a list of TodoItem(s) populated by API responses
  */
 
-// fetch data (mock)
-const data = []
-for (let i = 0; i < 10; i++) {
-    data.push({
-        "id": i,
-        "name": `todo-title ${i}`,
-        "date": "Due Mar 11 at 1:30pm",
-        "assignee": `Assignee ${i}`,
-        "isComplete": false
-    });
-}
-
 export default function TodoList() {
-    const [todos, setTodos] = useState(data);
+    // const [todos, setTodos] = useState(data);
 
-    const handleStatus = (todo) => {
-        let modified_todos = todos;
-        // console.log("before setTodos:", modified_todos[todo.id].isComplete);
-        modified_todos[todo.id].isComplete = !modified_todos[todo.id].isComplete;
-        setTodos(modified_todos);
-        // console.log("after setTodos:", todos[todo.id]);
-    }
+    // const handleStatus = (todo) => {
+    //     let modified_todos = todos;
+    //     // console.log("before setTodos:", modified_todos[todo.id].isComplete);
+    //     modified_todos[todo.id].isComplete = !modified_todos[todo.id].isComplete;
+    //     setTodos(modified_todos);
+    //     // console.log("after setTodos:", todos[todo.id]);
+    // }
 
     // TODO: handleDelete
 
     // TODO: handleEdit
 
-    useEffect(() => {
-        // TODO: show/hide as todos state changed
-        console.log("updating item state");
-    }, [todos]);
-
     return (
-        <div>
-            {todos.map((todo, index) => {
-                if (!todo.isComplete) return (<TodoItem todo={todo} handleStatus={handleStatus} index={index} />)
-            })}
-        </div>
+        <AssignmentContext.Consumer>
+            {value => (
+                <Grid>
+                    {
+                        value.todo_list.map(todo => {
+                            /** TODO: pass handleStatus function: <TodoItem todo={todo} handleStatus={handleStatus} /> */
+                            if (!todo.completed) return <TodoItem todo={todo} />
+                        })
+                    }
+                </Grid>
+            )}
+        </AssignmentContext.Consumer>
     );
 }

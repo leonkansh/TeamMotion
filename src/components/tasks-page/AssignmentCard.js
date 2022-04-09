@@ -1,8 +1,7 @@
-import React from "react";
+import { React, useState } from "react";
 import { Box } from '@mui/system';
 import Typography from '@mui/material/Typography';
 import { ButtonBase } from "@mui/material";
-import { useState } from "react";
 
 const unselectedStyle = {
     bgcolor: 'text.disabled',
@@ -28,11 +27,12 @@ const selectedStyle = {
  * takes an Assignment object to parse assignment name, due date, lead name
  * @returns display a card that holds the parsed information
  */
-export default function AssignmentCard() {
+export default function AssignmentCard({ assignment }) {
     const [style, setStyle] = useState(unselectedStyle);
 
     return (
         <ButtonBase
+            key={assignment._id}
             focusRipple
             sx={style}
             onClick={event => {
@@ -44,7 +44,7 @@ export default function AssignmentCard() {
 
             <Box>
                 <Typography sx={{ fontSize: 20 }} component="div" >
-                    Assignment name
+                    {assignment.name}
                 </Typography>
 
                 <Typography color="text.secondary" >
@@ -52,7 +52,7 @@ export default function AssignmentCard() {
                 </Typography>
 
                 <Typography variant="body2">
-                    Leader Name
+                    Leader: {assignment.leader.name}
                 </Typography>
             </Box>
         </ButtonBase>
