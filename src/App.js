@@ -6,6 +6,7 @@ import Summary from './pages/Summary';
 import Charters from './pages/Charters';
 import Reflections from './pages/Reflections';
 import TodoCreation from './pages/TodoCreation';
+import PostCreation from './pages/PostCreation';
 
 function App() {
     return (
@@ -18,6 +19,7 @@ function App() {
                 <Route path="/summary" component={Summary} />
                 <Route path="/charters" component={Charters} />
                 <Route path="/reflections" component={Reflections} />
+                <Route path="/tasks/create-post" component={PostCreation} />
             </Switch>
         </Router>
     );

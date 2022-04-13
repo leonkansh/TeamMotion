@@ -13,30 +13,12 @@ export default function CharterList() {
                     bgcolor: 'primary.main',
                     borderTopLeftRadius: 15,
                     borderTopRightRadius: 15,
-                    height: 1,
+                    minHeight: "100vh",
                     pt: 2,
                     pl: 3,
                     pr: 3
                 }}
             >
-
-                <CharterItem />
-                <CharterItem />
-                <CharterItem />
-                <CharterItem />
-                <CharterItem />
-                <CharterItem />
-                <CharterItem />
-                <CharterItem />
-                <CharterItem />
-                <CharterItem />
-                <CharterItem />
-                <CharterItem />
-                <CharterItem />
-                <CharterItem />
-                <CharterItem />
-                <CharterItem />
-                <CharterItem />
                 <CharterItem />
             </Box>
         </div>
