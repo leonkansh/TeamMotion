@@ -1,42 +1,29 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { AssignmentContext } from "../../pages/AssignmentContext";
 import TodoItem from "./TodoItem";
 import { Grid } from '@mui/material';
 
-
-/**
- * Takes assignmentid as input props
- * Fetch a list of todo items using assignmentid
- * @returns a list of TodoItem(s) populated by API responses
- */
-
 export default function TodoList() {
-    // const [todos, setTodos] = useState(data);
+    const value = useContext(AssignmentContext);
 
-    // const handleStatus = (todo) => {
-    //     let modified_todos = todos;
-    //     // console.log("before setTodos:", modified_todos[todo.id].isComplete);
-    //     modified_todos[todo.id].isComplete = !modified_todos[todo.id].isComplete;
-    //     setTodos(modified_todos);
-    //     // console.log("after setTodos:", todos[todo.id]);
-    // }
+    const handleStatus = (todo) => {
+        let modified_todos = value.todo_list;
+        const index = modified_todos.indexOf(todo);
+        modified_todos[index].completed = !modified_todos[index].completed
+        value.setTodoList(modified_todos);
+    }
 
     // TODO: handleDelete
 
     // TODO: handleEdit
 
     return (
-        <AssignmentContext.Consumer>
-            {value => (
-                <Grid>
-                    {
-                        value.todo_list.map(todo => {
-                            /** TODO: pass handleStatus function: <TodoItem todo={todo} handleStatus={handleStatus} /> */
-                            if (!todo.completed) return <TodoItem todo={todo} />
-                        })
-                    }
-                </Grid>
-            )}
-        </AssignmentContext.Consumer>
+        <Grid>
+            {
+                value.todo_list.map(todo => {
+                    if (!todo.completed) return <TodoItem todo={todo} handleStatus={handleStatus} />
+                })
+            }
+        </Grid>
     );
 }

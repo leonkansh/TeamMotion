@@ -20,7 +20,14 @@ export default function AssignmentList() {
                 >
                     {
                         value.data.map(assignment => {
-                            return (<AssignmentCard assignment={assignment} setAssignmentId={value.setAssignmentId} />)
+                            return (
+                                <AssignmentCard
+                                    assignment={assignment}
+                                    setAssignmentId={value.setAssignmentId}
+                                    setTodoList={value.setTodoList}
+                                    data={value.data}
+                                />
+                            )
                         })
                     }
                 </Box>

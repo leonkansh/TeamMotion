@@ -11,7 +11,7 @@ const LinkBehavior = React.forwardRef((props, ref) => (
     <RouterLink ref={ref} to="/" {...props} />
 ));
 
-export default function HeaderBar() {
+export default function HeaderBar({ screenname }) {
     return (
         <Box>
             <AppBar position="static">
@@ -36,7 +36,7 @@ export default function HeaderBar() {
                         }}
                     >
                         <Typography variant="h6" component="p" sx={{ flexGrow: 1 }}>
-                            Screen Name
+                            {screenname}
                         </Typography>
                         <Typography variant="h8" component="p" sx={{ flexGrow: 1 }}>
                             Team Name

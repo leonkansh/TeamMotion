@@ -27,7 +27,7 @@ const selectedStyle = {
  * takes an Assignment object to parse assignment name, due date, lead name
  * @returns display a card that holds the parsed information
  */
-export default function AssignmentCard({ assignment, setAssignmentId }) {
+export default function AssignmentCard({ assignment, setAssignmentId, setTodoList, data }) {
     const [style, setStyle] = useState(unselectedStyle);
 
     return (
@@ -39,6 +39,7 @@ export default function AssignmentCard({ assignment, setAssignmentId }) {
                 console.log("is clicked!");
                 setStyle(selectedStyle);
                 setAssignmentId(assignment._id);
+                setTodoList(data.find(item => item._id === assignment._id).todos)
             }}
         >
 

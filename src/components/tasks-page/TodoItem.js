@@ -12,8 +12,7 @@ import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 
-// export default function TodoItem({ todo, handleStatus }) {
-export default function TodoItem({ todo }) {
+export default function TodoItem({ todo, handleStatus }) {
 
     const [state, setState] = React.useState(false);
 
@@ -61,8 +60,8 @@ export default function TodoItem({ todo }) {
                         <Checkbox
                             tabIndex={-1}
                             disableRipple
-                        // TODO: call set function
-                        // onChange={e => { handleStatus(todo) }}
+                            // TODO: call set function
+                            onChange={e => { handleStatus(todo) }}
                         />
                         {/* TODO: update assignment context */}
                     </CardActions>
