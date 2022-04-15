@@ -60,7 +60,7 @@ export default function PostCreation() {
                     onChange={event => setContent(event.target.value)}
                 />
 
-                <Button variant="contained" onClick={e => postData()}>Post</Button>
+                <Button href="/reflections" variant="contained" onClick={e => postData()}>Post</Button>
             </Stack>
         </div>
     )
