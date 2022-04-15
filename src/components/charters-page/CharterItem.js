@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 // title: fontcolor varies when `charters` or `charter templates`
 // content: line breaks, calendar view, placeholder
 
-export default function CharterItem() {
+export default function CharterItem({ item }) {
     return (
         <div>
             <Box
@@ -20,13 +20,8 @@ export default function CharterItem() {
                     mb: 2
                 }}
             >
-                <h2>charter item</h2>
-                <p>
-                    some agreements here some agreements here some agreements here some agreement here <br />
-                    some agreements here some agreements here some agreements here some agreement here <br />
-                    some agreements here some agreements here <br />
-                    some agreements here some agreements here <br />
-                </p>
+                <h2>{item.title}</h2>
+                <p>{item.content}</p>
             </Box>
         </div>
     );
