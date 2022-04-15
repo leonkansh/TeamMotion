@@ -6,17 +6,10 @@ import { Link, useLocation } from 'react-router-dom';
 export default function CharterTemplateItem({ item }) {
     const charterCreatorPath = "/charters/create-charter";
 
-    const location = useLocation();
-    const { data } = location.state;
-    if (!item) {
-        item = data;
-        console.log("item", item);
-    }
-
     return (
         <ButtonBase
             focusRipple
-            onClick={event => console.log("e", event.target.value)}
+        // onClick={event => console.log("e", event.target.value)}
         >
             <Box
                 sx={{
@@ -36,7 +29,7 @@ export default function CharterTemplateItem({ item }) {
                 <Link to={{
                     pathname: charterCreatorPath,
                     state: {
-                        data: data
+                        data: item
                     },
                 }}>Use this template</Link>
             </Box>

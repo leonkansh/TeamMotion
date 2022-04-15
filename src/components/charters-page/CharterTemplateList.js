@@ -20,7 +20,7 @@ export default function CharterTemplateList({ name, data_list }) {
                 }}
             >
                 {
-                    data_list.map(item => <CharterTemplateItem item={item} />)
+                    data_list.map((item) => <CharterTemplateItem item={item} />)
                 }
             </Box>
         </div>

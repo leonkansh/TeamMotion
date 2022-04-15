@@ -14,7 +14,6 @@ export default function CharterTemplate({ data_list }) {
     const { data } = location.state;
     if (!data_list) {
         data_list = data;
-        console.log("data_list", data_list);
     }
 
     React.useEffect(() => {

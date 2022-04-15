@@ -25,12 +25,7 @@ export default function Charters() {
         loadCharters();
     }, []);
 
-    const data = [
-        {
-            name: "Make your own Charter",
-            content: "What are some things that all members want to agree on that will help in your team work?"
-        }
-    ]
+    const data = require("./charter-templates.json");
 
     const charterTemplatePath = "/charters/charter-templates";
 
