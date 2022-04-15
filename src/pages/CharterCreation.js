@@ -17,15 +17,13 @@ export default function CharterCreation() {
     const { data } = location.state;
     console.log("data:", data);
 
-    const [title, setTitle] = React.useState("");
+    const [name, setName] = React.useState("");
     const [content, setContent] = React.useState("");
-    const [date, setDate] = React.useState(new Date());
 
     const postData = () => {
-        setDate(new Date());
-        const post = { title, content, date };
+        const post = { name, content };
         // TODO: change url
-        fetch("http://localhost:3000/api/board/621d26f81a997588eb8b7979/1", {
+        fetch("http://localhost:3000/api/charters/621d26f81a997588eb8b7979/1", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -46,13 +44,13 @@ export default function CharterCreation() {
             >
                 <ArrowBackIcon sx={{ fontSize: 35 }} />
             </IconButton>
-            <h1>make a post here</h1>
+
             <Stack>
                 <TextField
                     placeholder={data[0].name}
-                    value={title}
+                    value={name}
                     sx={{ fontSize: 24, maxWidth: 300, p: 1, pb: 3 }}
-                    onChange={event => setTitle(event.target.value)}
+                    onChange={event => setName(event.target.value)}
                 />
 
                 <TextField
@@ -65,7 +63,7 @@ export default function CharterCreation() {
                     onChange={event => setContent(event.target.value)}
                 />
 
-                <Button href="/reflections" variant="contained" onClick={e => postData()}>Post</Button>
+                <Button href="/charters" variant="contained" onClick={e => postData()}>Post</Button>
             </Stack>
         </div>
     )
