@@ -21,7 +21,7 @@ export default function TodoList() {
         <Grid>
             {
                 value.todo_list.map(todo => {
-                    if (!todo.completed) return <TodoItem todo={todo} handleStatus={handleStatus} />
+                    if (!todo.completed) return <TodoItem key={todo._id} todo={todo} handleStatus={handleStatus} />
                 })
             }
         </Grid>

@@ -22,6 +22,7 @@ export default function AssignmentList() {
                         value.data.map(assignment => {
                             return (
                                 <AssignmentCard
+                                    key={assignment._id}
                                     assignment={assignment}
                                     setAssignmentId={value.setAssignmentId}
                                     setTodoList={value.setTodoList}
