@@ -25,8 +25,7 @@ export default function Reflections() {
         loadPosts();
     }, []);
 
-
-    const postPath = "/tasks/create-post";
+    const postPath = "/reflections/create-post";
 
     return (
         <div>
