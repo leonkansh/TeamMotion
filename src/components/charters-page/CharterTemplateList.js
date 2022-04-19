@@ -1,6 +1,7 @@
 import React from 'react';
 import CharterTemplateItem from './CharterTemplateItem';
 import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack';
 
 // container with purple bg
 // a list of charter items
@@ -19,9 +20,11 @@ export default function CharterTemplateList({ name, data_list }) {
                     pr: 3
                 }}
             >
-                {
-                    data_list.map((item) => <CharterTemplateItem item={item} />)
-                }
+                <Stack>
+                    {
+                        data_list.map((item) => <CharterTemplateItem item={item} />)
+                    }
+                </Stack>
             </Box>
         </div>
     )
