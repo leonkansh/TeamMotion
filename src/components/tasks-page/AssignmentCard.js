@@ -35,9 +35,13 @@ export default function AssignmentCard({ assignment, setAssignmentId, setTodoLis
             key={assignment._id}
             focusRipple
             sx={style}
-            onClick={event => {
-                console.log("is clicked!");
+            onFocus={(e) => {
                 setStyle(selectedStyle);
+                setAssignmentId(assignment._id);
+                setTodoList(data.find(item => item._id === assignment._id).todos)
+            }}
+            onBlur={(e) => {
+                setStyle(unselectedStyle)
                 setAssignmentId(assignment._id);
                 setTodoList(data.find(item => item._id === assignment._id).todos)
             }}
