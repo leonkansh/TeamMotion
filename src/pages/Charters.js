@@ -42,7 +42,7 @@ export default function Charters() {
                         },
                     }}>Link Text</Link>
                     <AddButton path={charterTemplatePath} />
-                    <CharterList name="Charters" data_list={charters} />
+                    <CharterList name="Charters" data_list={charters.data} />
                     <BottomNavBar />
                 </div>
             )}
