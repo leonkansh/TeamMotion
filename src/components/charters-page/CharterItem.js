@@ -20,7 +20,7 @@ export default function CharterItem({ item }) {
                     mb: 2
                 }}
             >
-                <h2>{item.title}</h2>
+                <h2>{item.title || item.name}</h2>
                 <p>{item.content}</p>
             </Box>
         </div>
