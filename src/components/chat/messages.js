@@ -15,13 +15,14 @@ function Message(msg) {
                 width: '50px',
                 backgroundColor: '#EFEFEF',
                 borderRadius: '50%',
-                marginTop: '15px',
+                marginTop: '20px',
                 marginRight: '15px'
             }}>
             </div>
             <div style={{
                 display: 'flex',
-                flexDirection: 'column'
+                flexDirection: 'column',
+                justifyContent: 'flex-start'
             }}>
                 <div style={{
                     display: 'flex',
@@ -29,12 +30,13 @@ function Message(msg) {
                 }}>
                     <p style={{
                         color: '#4B369D',
-                        font: '400 14em Poppins, sans-serif'
+                        font: '700 14 Poppins, sans-serif'
                     }}>{msg.sender.name}</p>
                     <p style={{
                         color: '#808191',
-                        font: '200 12em Poppins, sans-serif'
-                    }}>{msg.date}</p>
+                        font: '500 12 Poppins, sans-serif',
+                        marginLeft: 100
+                    }}>{new Date(msg.date).toLocaleTimeString('en-US')}</p>
                 </div>
                 <p>{msg.content}</p>
             </div>
@@ -49,8 +51,10 @@ export default function Messages(props) {
     })
     
     return (
-        <Paper sx={{
+        <Paper elevation='0' sx={{
+            marginTop: 1,
             marginBottom: 10,
+            width: 1,
             height: 'calc( 100% - 80px )',
             overflowY: 'scroll'
         }}>
