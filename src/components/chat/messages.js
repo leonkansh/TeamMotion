@@ -13,7 +13,7 @@ function Message(msg) {
             <div style={{
                 height: '50px',
                 width: '50px',
-                backgroundColor: 'grey',
+                backgroundColor: '#EFEFEF',
                 borderRadius: '50%',
                 marginTop: '15px',
                 marginRight: '15px'
@@ -27,8 +27,14 @@ function Message(msg) {
                     display: 'flex',
                     flexDirection: 'row'
                 }}>
-                    <p>{msg.sender.name}</p>
-                    <p>{msg.date}</p>
+                    <p style={{
+                        color: '#4B369D',
+                        font: '400 14em Poppins, sans-serif'
+                    }}>{msg.sender.name}</p>
+                    <p style={{
+                        color: '#808191',
+                        font: '200 12em Poppins, sans-serif'
+                    }}>{msg.date}</p>
                 </div>
                 <p>{msg.content}</p>
             </div>
