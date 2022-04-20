@@ -1,5 +1,6 @@
 # Mock data
 src/pages/assignments.json
+src/pages/messages.json
 
 # Logs
 logs
