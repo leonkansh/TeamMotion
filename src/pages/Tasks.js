@@ -6,46 +6,54 @@ import AssignmentList from '../components/tasks-page/AssignmentList';
 import AddButton from '../components/common/AddButton';
 import { AssignmentContext } from './AssignmentContext';
 
-// mock(fetch) assignments
-const assignments_data = require('./assignments.json');
-/*
-React.useEffect(() => {
-    // if changed and different state
-        // call api to update
-}, [assignments_data]); // Only re-run the effect if assignment_data changes
-*/
-
-/**
- * listen to assignment context, call api once updated
- */
 export default function Tasks() {
-    const todoPath = "/tasks/create-todo";
-
-    const [data, setData] = React.useState(assignments_data);
-
-    const [assignment_id, setAssignmentId] = React.useState(data[0]._id);
-
+    const [isLoaded, setIsLoaded] = React.useState(false);
+    const [data, setData] = React.useState([]);
+    const [assignment_id, setAssignmentId] = React.useState();
     const [todo_list, setTodoList] = React.useState([]);
+
+    const loadAssignments = async () => {
+        await fetch("http://localhost:3000/api/assignments/621d26f81a997588eb8b7979/team/1")
+            .then(res => res.json())
+            .then(receivedData => {
+                setData(receivedData);
+                if (!!assignment_id) {
+                    setAssignmentId(receivedData[0]._id)
+                }
+                setTodoList(receivedData[0].todos);
+
+                setIsLoaded(true);
+            })
+            .catch(error => {
+                setIsLoaded(false);
+                console.log("load data error:", error);
+            })
+    }
+
     React.useEffect(() => {
-        let todos = data.find(item => item._id === assignment_id).todos;
-        setTodoList(todos);
-    });
+        loadAssignments();
+    }, []);
+
+    const todoPath = "/tasks/create-todo";
 
     return (
         <div>
-            <HeaderBar screenname="Task" />
+            {!isLoaded && <p>Loading...</p>}
+            {isLoaded && (
+                <div>
+                    <HeaderBar screenname="Task" />
 
-            <AssignmentContext.Provider
-                value={{ data, assignment_id, setAssignmentId, todo_list, setTodoList }}
-            >
-                <AssignmentList />
-                <TodoList />
-            </AssignmentContext.Provider>
+                    <AssignmentContext.Provider
+                        value={{ data, assignment_id, setAssignmentId, todo_list, setTodoList }}
+                    >
+                        <AssignmentList />
+                        <TodoList />
+                    </AssignmentContext.Provider>
 
-            {/* filter button */}
-
-            <AddButton path={todoPath} />
-            <BottomNavBar />
+                    <AddButton path={todoPath} />
+                    <BottomNavBar />
+                </div>
+            )}
         </div>
     )
 }

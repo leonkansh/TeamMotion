@@ -23,6 +23,12 @@ const selectedStyle = {
     minheight: 150
 };
 
+const convertUTC = (input_date) => {
+    var options = { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' };
+    var date = new Date(input_date);
+    return date.toLocaleDateString("en-US", options);
+}
+
 /**
  * takes an Assignment object to parse assignment name, due date, lead name
  * @returns display a card that holds the parsed information
@@ -46,14 +52,13 @@ export default function AssignmentCard({ assignment, setAssignmentId, setTodoLis
                 setTodoList(data.find(item => item._id === assignment._id).todos)
             }}
         >
-
             <Box>
                 <Typography sx={{ fontSize: 20 }} component="div" >
                     {assignment.name}
                 </Typography>
 
                 <Typography color="text.secondary" >
-                    Due Monday, Mar 11 | 11:59pm
+                    Due {convertUTC(assignment.due)}
                 </Typography>
 
                 <Typography variant="body2">
