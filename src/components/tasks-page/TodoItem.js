@@ -13,7 +13,6 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 
 export default function TodoItem({ todo, handleStatus }) {
-
     const [state, setState] = React.useState(false);
 
     const toggleDrawer = (open) => (event) => {
@@ -48,6 +47,12 @@ export default function TodoItem({ todo, handleStatus }) {
         </Box>
     );
 
+    const convertUTC = (input_date) => {
+        var options = { weekday: 'long', month: 'short', day: 'numeric' };
+        var date = new Date(input_date);
+        return date.toLocaleDateString("en-US", options);
+    }
+
     return (
         <Card
             sx={{
@@ -73,10 +78,10 @@ export default function TodoItem({ todo, handleStatus }) {
                             {todo.content}
                         </Typography>
                         <Typography variant="h7" component="div">
-                            date: {todo.date}
+                            Done by {convertUTC(todo.date)}
                         </Typography>
                         <Typography variant="h7" component="div">
-                            assignee: {todo.userid.name}
+                            {todo.userid.name}
                         </Typography>
                     </CardContent>
                 </Grid>

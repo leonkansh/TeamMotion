@@ -24,7 +24,7 @@ const selectedStyle = {
 };
 
 const convertUTC = (input_date) => {
-    var options = { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' };
+    var options = { weekday: 'long', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric' };
     var date = new Date(input_date);
     return date.toLocaleDateString("en-US", options);
 }
