@@ -17,11 +17,8 @@ export default function Tasks() {
             .then(res => res.json())
             .then(receivedData => {
                 setData(receivedData);
-                if (!!assignment_id) {
-                    setAssignmentId(receivedData[0]._id)
-                }
+                setAssignmentId(receivedData[0]._id)
                 setTodoList(receivedData[0].todos);
-
                 setIsLoaded(true);
             })
             .catch(error => {

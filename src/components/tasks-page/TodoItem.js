@@ -65,7 +65,6 @@ export default function TodoItem({ todo, handleStatus }) {
                         <Checkbox
                             tabIndex={-1}
                             disableRipple
-                            // TODO: call set function
                             onChange={e => { handleStatus(todo) }}
                         />
                         {/* TODO: update assignment context */}
