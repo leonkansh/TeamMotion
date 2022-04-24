@@ -19,7 +19,7 @@ export default function AssignmentList() {
                     }}
                 >
                     {
-                        value.data.map(assignment => {
+                        value.data.map((assignment, index) => {
                             return (
                                 <AssignmentCard
                                     key={assignment._id}
@@ -27,6 +27,7 @@ export default function AssignmentList() {
                                     setAssignmentId={value.setAssignmentId}
                                     setTodoList={value.setTodoList}
                                     data={value.data}
+                                    index={index}
                                 />
                             )
                         })
