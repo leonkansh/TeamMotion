@@ -1,19 +1,53 @@
-import { useState, useEffect, useContext } from "react";
+import React from "react";
 import { AssignmentContext } from "../../pages/AssignmentContext";
 import TodoItem from "./TodoItem";
 import { Grid } from '@mui/material';
 
 export default function TodoList() {
-    const value = useContext(AssignmentContext);
+    const value = React.useContext(AssignmentContext);
 
     const handleStatus = (todo) => {
         let modified_todos = value.todo_list;
         const index = modified_todos.indexOf(todo);
-        modified_todos[index].completed = !modified_todos[index].completed
+        modified_todos[index].completed = !modified_todos[index].completed;
+        changeComplete(modified_todos[index]._id, modified_todos[index].completed, value.assignment_id)
+        value.setTodoList(modified_todos);
+
+        // FIXME: delete this todo in assignment data state as well
+        // set assignment as well 
+        // or, useEffect either assignment_id or todo_list is changed
+    }
+
+    const changeComplete = async (todoId, completed, assignmentId) => {
+        const todo = { todoId: todoId, completed: completed };
+        fetch(`http://localhost:3000/api/assignments/621d26f81a997588eb8b7979/${assignmentId}/team/1`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(todo)
+        })
+    }
+
+    const handleDelete = (todo) => {
+        let modified_todos = value.todo_list;
+        modified_todos = modified_todos.filter(item => item !== todo);
+        deleteTodo(todo._id, value.assignment_id);
         value.setTodoList(modified_todos);
     }
 
-    // TODO: handleDelete
+    const deleteTodo = async (todoId, assignmentId) => {
+        const todo = { todoId: todoId };
+        fetch(`http://localhost:3000/api/assignments/621d26f81a997588eb8b7979/${assignmentId}/team/1`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(todo)
+        }).catch(e => {
+            console.log("error", e);
+        })
+    }
 
     // TODO: handleEdit
 
@@ -21,7 +55,14 @@ export default function TodoList() {
         <Grid>
             {
                 value.todo_list.map(todo => {
-                    if (!todo.completed) return <TodoItem todo={todo} handleStatus={handleStatus} />
+                    if (!todo.completed) {
+                        return <TodoItem
+                            key={todo._id}
+                            todo={todo}
+                            handleStatus={handleStatus}
+                            handleDelete={handleDelete}
+                        />
+                    }
                 })
             }
         </Grid>
