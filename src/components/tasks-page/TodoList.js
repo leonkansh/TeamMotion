@@ -12,6 +12,10 @@ export default function TodoList() {
         modified_todos[index].completed = !modified_todos[index].completed;
         changeComplete(modified_todos[index]._id, modified_todos[index].completed, value.assignment_id)
         value.setTodoList(modified_todos);
+
+        // FIXME: delete this todo in assignment data state as well
+        // set assignment as well 
+        // or, useEffect either assignment_id or todo_list is changed
     }
 
     const changeComplete = async (todoId, completed, assignmentId) => {
@@ -25,7 +29,25 @@ export default function TodoList() {
         })
     }
 
-    // TODO: handleDelete
+    const handleDelete = (todo) => {
+        let modified_todos = value.todo_list;
+        modified_todos = modified_todos.filter(item => item !== todo);
+        deleteTodo(todo._id, value.assignment_id);
+        value.setTodoList(modified_todos);
+    }
+
+    const deleteTodo = async (todoId, assignmentId) => {
+        const todo = { todoId: todoId };
+        fetch(`http://localhost:3000/api/assignments/621d26f81a997588eb8b7979/${assignmentId}/team/1`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(todo)
+        }).catch(e => {
+            console.log("error", e);
+        })
+    }
 
     // TODO: handleEdit
 
@@ -33,7 +55,14 @@ export default function TodoList() {
         <Grid>
             {
                 value.todo_list.map(todo => {
-                    if (!todo.completed) return <TodoItem key={todo._id} todo={todo} handleStatus={handleStatus} />
+                    if (!todo.completed) {
+                        return <TodoItem
+                            key={todo._id}
+                            todo={todo}
+                            handleStatus={handleStatus}
+                            handleDelete={handleDelete}
+                        />
+                    }
                 })
             }
         </Grid>

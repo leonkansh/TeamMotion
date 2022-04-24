@@ -2,17 +2,17 @@ import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import { Drawer, Grid } from '@mui/material';
+import { Grid, IconButton } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import Checkbox from '@mui/material/Checkbox';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
+import DeleteIcon from '@mui/icons-material/Delete';
 import Box from '@mui/material/Box';
 import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 
-export default function TodoItem({ todo, handleStatus }) {
+export default function TodoItem({ todo, handleStatus, handleDelete }) {
     const [state, setState] = React.useState(false);
 
     const toggleDrawer = (open) => (event) => {
@@ -53,6 +53,16 @@ export default function TodoItem({ todo, handleStatus }) {
         return date.toLocaleDateString("en-US", options);
     }
 
+    const displayDate = (input) => {
+        if (!input) return;
+        return `Done by ${convertUTC(input)}`;
+    }
+
+    const displayUser = (input) => {
+        if (!input) return;
+        return input;
+    }
+
     return (
         <Card
             sx={{
@@ -77,27 +87,18 @@ export default function TodoItem({ todo, handleStatus }) {
                             {todo.content}
                         </Typography>
                         <Typography variant="h7" component="div">
-                            Done by {convertUTC(todo.date)}
+                            {displayDate(todo.date)}
                         </Typography>
                         <Typography variant="h7" component="div">
-                            {todo.userid.name}
+                            {displayUser(todo.userid.name)}
                         </Typography>
                     </CardContent>
                 </Grid>
 
                 <Grid item sx={{ position: 'absolute', right: 10 }}>
-                    <CardActions>
-                        {<React.Fragment key='bottom-drawer-frag'>
-                            <MoreVertIcon onClick={toggleDrawer(true)} />
-                            <Drawer
-                                anchor='bottom'
-                                open={state}
-                                onClose={toggleDrawer(false)}
-                            >
-                                {list()}
-                            </Drawer>
-                        </React.Fragment>}
-                    </CardActions>
+                    <IconButton color='error' onClick={e => handleDelete(todo)}>
+                        <DeleteIcon />
+                    </IconButton>
                 </Grid>
 
             </Grid>
