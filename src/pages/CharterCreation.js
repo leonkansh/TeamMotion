@@ -21,7 +21,7 @@ export default function CharterCreation() {
 
     const postData = () => {
         const post = { name, content };
-        fetch("http://localhost:3000/api/charters/621d26f81a997588eb8b7979/1", {
+        fetch("http://localhost:3000/api/charters/6263d2fb17033b23e05c0401/1", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

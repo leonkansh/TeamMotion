@@ -20,7 +20,7 @@ export default function PostCreation() {
     const postData = () => {
         setDate(new Date());
         const post = { title, content, date };
-        fetch("http://localhost:3000/api/board/621d26f81a997588eb8b7979/1", {
+        fetch("http://localhost:3000/api/board/6263d2fb17033b23e05c0401/1", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
