@@ -3,11 +3,7 @@ import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
-import AddTaskIcon from '@mui/icons-material/AddTask';
-import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
-import AssignmentOutlinedIcon from '@mui/icons-material/AssignmentOutlined';
-import ContentCopyOutlinedIcon from '@mui/icons-material/ContentCopyOutlined';
-import TipsAndUpdatesOutlinedIcon from '@mui/icons-material/TipsAndUpdatesOutlined';
+import { UsersThree, ChatCircle, Lightbulb, ListChecks } from "phosphor-react";
 import Paper from '@mui/material/Paper';
 import { makeStyles } from '@mui/styles';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
@@ -57,10 +53,10 @@ export default function FixedBottomNavigation() {
                     onChange={(event, newValue) => setValue(newValue)}
                     className={classes.root}
                 >
-                    <BottomNavigationAction label="teambase" icon={<AssignmentOutlinedIcon />} component={RouterLink} to="/teambase" />
-                    <BottomNavigationAction label="chat" icon={<ChatBubbleOutlineOutlinedIcon />} component={RouterLink} to="/chats" />
-                    <BottomNavigationAction label="reflection" icon={<TipsAndUpdatesOutlinedIcon />} component={RouterLink} to="/reflections" />
-                    <BottomNavigationAction label="task" icon={<AddTaskIcon />} component={RouterLink} to="/tasks" />
+                    <BottomNavigationAction icon={<UsersThree size={32} />} component={RouterLink} to="/teambase" />
+                    <BottomNavigationAction icon={<ChatCircle size={32} />} component={RouterLink} to="/chats" />
+                    <BottomNavigationAction icon={<Lightbulb size={32} />} component={RouterLink} to="/reflections" />
+                    <BottomNavigationAction icon={<ListChecks size={32} />} component={RouterLink} to="/tasks" />
                 </BottomNavigation>
             </Paper>
         </Box >
