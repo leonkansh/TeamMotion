@@ -10,7 +10,7 @@ export default function Charters() {
     const [charters, setCharters] = React.useState([]);
 
     const loadCharters = async () => {
-        await fetch("http://localhost:3000/api/charters/621d26f81a997588eb8b7979/1")
+        await fetch("http://localhost:3000/api/charters/6263d2fb17033b23e05c0401/1")
             .then(res => res.json())
             .then(receivedCharters => {
                 setCharters(receivedCharters);

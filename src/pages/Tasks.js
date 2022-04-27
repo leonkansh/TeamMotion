@@ -13,7 +13,7 @@ export default function Tasks() {
     const [todo_list, setTodoList] = React.useState([]);
 
     const loadAssignments = async () => {
-        await fetch("http://localhost:3000/api/assignments/621d26f81a997588eb8b7979/team/1")
+        await fetch("http://localhost:3000/api/assignments/6263d2fb17033b23e05c0401/team/1")
             .then(res => res.json())
             .then(receivedData => {
                 setData(receivedData);
