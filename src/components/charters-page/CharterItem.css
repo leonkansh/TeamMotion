@@ -1,0 +1,11 @@
+.btn-emoji {
+    width: 48px;
+    height: 23px;
+    left: 110px;
+    top: 578px;
+
+    border: 1.5px solid #4B369D;
+    box-sizing: border-box;
+    border-radius: 5px;
+    color: #4B369D;
+}

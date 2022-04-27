@@ -2,6 +2,7 @@ import React from 'react';
 import Box from '@mui/material/Box';
 import Picker from 'emoji-picker-react';
 import Popper from '@mui/material/Popper';
+import './CharterItem.css'
 
 export default function CharterItem({ item }) {
     const [chosenEmoji, setChosenEmoji] = React.useState(item.reactions);
@@ -60,8 +61,19 @@ export default function CharterItem({ item }) {
                 </Popper>
                 {chosenEmoji.length > 0 && (
                     <span>
-                        {chosenEmoji.map(post => {
-                            if (post) return (` ${post.emoji} ${post.users.length}`)
+                        {chosenEmoji.map((post, index) => {
+                            if (post) {
+                                return (
+                                    <button
+                                        className='btn-emoji'
+                                        key={`emoji ${index}`}
+                                        value={post.emoji}
+                                        onClick={async (e) => postEmoji(e.target.value)}
+                                    >
+                                        {post.emoji} {post.users.length}
+                                    </button>
+                                )
+                            }
                         })}
                     </span>
                 )}
