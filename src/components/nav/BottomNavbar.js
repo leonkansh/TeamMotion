@@ -32,11 +32,10 @@ const LinkBehavior = React.forwardRef((props, ref) => (
 
 function linkScreenToPath(routeName) {
     routeName = routeName.split("/")[1];
-    if ("tasks" === routeName) return 0;
+    if ("teambase" === routeName) return 0;
     else if ("chats" === routeName) return 1;
-    else if ("summary" === routeName) return 2;
-    else if ("charters" === routeName) return 3;
-    else if ("reflections" === routeName) return 4;
+    else if ("reflections" === routeName) return 2;
+    else if ("tasks" === routeName) return 3;
     else return -1;
 }
 
@@ -58,11 +57,10 @@ export default function FixedBottomNavigation() {
                     onChange={(event, newValue) => setValue(newValue)}
                     className={classes.root}
                 >
-                    <BottomNavigationAction label="ToDo" icon={<AddTaskIcon />} component={RouterLink} to="/tasks" />
-                    <BottomNavigationAction label="Chat" icon={<ChatBubbleOutlineOutlinedIcon />} component={RouterLink} to="/chats" />
-                    <BottomNavigationAction label="Summary" icon={<AssignmentOutlinedIcon />} component={RouterLink} to="/summary" />
-                    <BottomNavigationAction label="Charters" icon={<ContentCopyOutlinedIcon />} component={RouterLink} to="/charters" />
-                    <BottomNavigationAction label="Reflection" icon={<TipsAndUpdatesOutlinedIcon />} component={RouterLink} to="/reflections" />
+                    <BottomNavigationAction label="teambase" icon={<AssignmentOutlinedIcon />} component={RouterLink} to="/teambase" />
+                    <BottomNavigationAction label="chat" icon={<ChatBubbleOutlineOutlinedIcon />} component={RouterLink} to="/chats" />
+                    <BottomNavigationAction label="reflection" icon={<TipsAndUpdatesOutlinedIcon />} component={RouterLink} to="/reflections" />
+                    <BottomNavigationAction label="task" icon={<AddTaskIcon />} component={RouterLink} to="/tasks" />
                 </BottomNavigation>
             </Paper>
         </Box >

@@ -18,7 +18,7 @@ function App() {
                 <Route exact path="/tasks" component={Tasks} />
                 <Route path="/tasks/create-todo" component={TodoCreation} />
                 <Route path="/chats" component={Chats} />
-                <Route path="/summary" component={Summary} />
+                <Route path="/teambase" component={Summary} />
                 <Route exact path="/charters" component={Charters} />
                 <Route path="/charters/charter-templates" component={CharterTemplate} />
                 <Route path="/charters/create-charter" component={CharterCreation} />
