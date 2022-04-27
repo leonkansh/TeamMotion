@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Tasks from './pages/Tasks';
 import Chats from './pages/Chats';
-import Summary from './pages/Summary';
+import Teambase from './pages/Teambase';
 import Charters from './pages/Charters';
 import Reflections from './pages/Reflections';
 import TodoCreation from './pages/TodoCreation';
@@ -18,7 +18,7 @@ function App() {
                 <Route exact path="/tasks" component={Tasks} />
                 <Route path="/tasks/create-todo" component={TodoCreation} />
                 <Route path="/chats" component={Chats} />
-                <Route path="/teambase" component={Summary} />
+                <Route path="/teambase" component={Teambase} />
                 <Route exact path="/charters" component={Charters} />
                 <Route path="/charters/charter-templates" component={CharterTemplate} />
                 <Route path="/charters/create-charter" component={CharterCreation} />
