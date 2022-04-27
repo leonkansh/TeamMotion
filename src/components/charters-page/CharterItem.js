@@ -3,11 +3,23 @@ import Box from '@mui/material/Box';
 import Picker from 'emoji-picker-react';
 import Popper from '@mui/material/Popper';
 
-// title: fontcolor varies when `charters` or `charter templates`
-// content: line breaks, calendar view, placeholder
-
 export default function CharterItem({ item }) {
-    const [chosenEmoji, setChosenEmoji] = React.useState([]);
+    const [chosenEmoji, setChosenEmoji] = React.useState(item.reactions);
+
+    const postEmoji = async (emoji) => {
+        const reaction = { emoji: emoji, postid: item._id };
+        fetch("http://localhost:3000/api/board/6263d2fb17033b23e05c0401/1/react", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(reaction)
+        })
+        .then(res => res.json())
+        .then(receivedData => {
+            setChosenEmoji(receivedData);
+        }).catch(e => console.log("error:", e));
+    }
 
     const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -15,18 +27,13 @@ export default function CharterItem({ item }) {
         setAnchorEl(anchorEl ? null : event.currentTarget);
     };
 
-    const onEmojiClick = (event, emojiObject) => {
-        const list = chosenEmoji;
-        list.push(emojiObject)
-        setChosenEmoji(list);
+    const onEmojiClick = async (event, emojiObject) => {
         setAnchorEl(null);
-        /** TODO: post API with new emoji list */
+        await postEmoji(emojiObject.emoji);
     }
 
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popper' : undefined;
-
-    console.log(chosenEmoji);
 
     return (
         <div>
@@ -51,10 +58,12 @@ export default function CharterItem({ item }) {
                 <Popper id={id} open={open} anchorEl={anchorEl}>
                     <Picker onEmojiClick={onEmojiClick} />
                 </Popper>
-                {chosenEmoji.length > 0 ? (
-                    <span>You chose: {chosenEmoji.map(item => item.emoji)}</span>
-                ) : (
-                    <span>No emoji chosen</span>
+                {chosenEmoji.length > 0 && (
+                    <span>
+                        {chosenEmoji.map(post => {
+                            if (post) return (` ${post.emoji} ${post.users.length}`)
+                        })}
+                    </span>
                 )}
             </Box>
         </div>
