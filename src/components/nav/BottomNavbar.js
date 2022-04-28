@@ -40,7 +40,7 @@ function linkScreenToPath(routeName) {
     else return -1;
 }
 
-export default function FixedBottomNavigation() {
+export default function FixedBottomNavigation(props) {
     const pathname = useLocation().pathname;
     const [value, setValue] = React.useState(linkScreenToPath(pathname));
 
@@ -59,7 +59,7 @@ export default function FixedBottomNavigation() {
                     className={classes.root}
                 >
                     <BottomNavigationAction label="ToDo" icon={<AddTaskIcon />} component={RouterLink} to="/tasks" />
-                    <BottomNavigationAction label="Chat" icon={<ChatBubbleOutlineOutlinedIcon />} component={RouterLink} to="/chats" />
+                    <BottomNavigationAction label="Chat" icon={<ChatBubbleOutlineOutlinedIcon />} component={RouterLink} to={{pathname:"/chats", state:props.userData}}/>
                     <BottomNavigationAction label="Summary" icon={<AssignmentOutlinedIcon />} component={RouterLink} to="/summary" />
                     <BottomNavigationAction label="Charters" icon={<ContentCopyOutlinedIcon />} component={RouterLink} to="/charters" />
                     <BottomNavigationAction label="Reflection" icon={<TipsAndUpdatesOutlinedIcon />} component={RouterLink} to="/reflections" />
