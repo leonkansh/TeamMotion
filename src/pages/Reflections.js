@@ -9,7 +9,7 @@ export default function Reflections() {
     const [posts, setPosts] = React.useState([]);
 
     const loadPosts = async () => {
-        await fetch("http://localhost:3000/api/board/621d26f81a997588eb8b7979/1")
+        await fetch("http://localhost:3000/api/board/6263d2fb17033b23e05c0401/1")
             .then(res => res.json())
             .then(receivedPosts => {
                 setPosts(receivedPosts);
