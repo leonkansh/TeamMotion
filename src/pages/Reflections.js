@@ -1,15 +1,17 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 import HeaderBar from '../components/nav/HeaderBar';
 import BottomNavBar from '../components/nav/BottomNavbar';
 import AddButton from '../components/common/AddButton';
 import CharterList from '../components/charters-page/CharterList';
 
 export default function Reflections() {
+    const { orgid, teamid } = useParams();
     const [isLoaded, setIsLoaded] = React.useState(false);
     const [posts, setPosts] = React.useState([]);
 
     const loadPosts = async () => {
-        await fetch("http://localhost:3000/api/board/6263d2fb17033b23e05c0401/1")
+        await fetch(`http://localhost:3000/api/board/${orgid}/${teamid}`)
             .then(res => res.json())
             .then(receivedPosts => {
                 setPosts(receivedPosts);
@@ -25,7 +27,7 @@ export default function Reflections() {
         loadPosts();
     }, []);
 
-    const postPath = "/reflections/create-post";
+    const postPath = `/orgs/${orgid}/teams/${teamid}/reflections/create-post`;
 
     return (
         <div>

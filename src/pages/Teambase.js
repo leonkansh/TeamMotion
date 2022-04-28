@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import HeaderBar from '../components/nav/HeaderBar';
 import BottomNavBar from '../components/nav/BottomNavbar';
 import { Divider } from '@mui/material';
@@ -7,7 +7,8 @@ import { Plus } from "phosphor-react";
 import './Teambase.css'
 
 export default function Teambase() {
-    const meetingPath = "/teambase/meetings";
+    const { orgid, teamid } = useParams();
+    const meetingPath = `/orgs/${orgid}/teams/${teamid}/teambase/meetings`;
 
     return (
         <div className='container'>
