@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 export default function MeetingCard({ meeting }) {
     const convertTime = (time) => {
         const hour = Math.trunc(time);
-        let minute = (time % 1) * 60;
+        let minute = Math.trunc((time % 1) * 60);
         minute = minute < 10 ? `0${minute}` : minute;
         return `${hour}:${minute}`;
     }
