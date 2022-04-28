@@ -17,3 +17,9 @@
 h3 {
     /* font, font-size, font-family, padding-bottom, */
 }
+
+.rows .row {
+    /* TODO: align section-title and btn-edit correctly */
+    display: inline-block;
+    justify-content: space-evenly;
+ }
