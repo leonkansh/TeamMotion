@@ -28,7 +28,10 @@ export default function Home() {
     // if self.status=='success', load orgs
     let page = (
         <div>
-            Not logged in
+            Home page: Choose your team
+            <Box sx={{ typography: 'body1' }}>
+                <Link component={RouterLink} to="/teambase">Go to your teambase</Link>
+            </Box>
         </div>
     );
     if(self != null && self.status == 'success') {
@@ -60,10 +63,11 @@ export default function Home() {
             >
                 {greeting}
                 {Orgs(self.orgs)}
-                <Link component={RouterLink} to={{ pathname:"/summary",
+                <Box sx={{ typography: 'body1' }}>
+                    <Link component={RouterLink} to={{ pathname:"/summary",
                     state: {orgid:targetOrg, teamid:targetTeamId, userid:self._id }}}
-                >
-                        Go to your team summary</Link>
+                >Go to your teambase</Link>
+                </Box>
             </div>
         );
     }
