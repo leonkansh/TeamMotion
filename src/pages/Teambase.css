@@ -1,0 +1,19 @@
+.container {
+    /* position: relative; */
+    /* width: 500px;
+    height: 500px;
+    background-color: #ffbf00; */
+}
+
+.btn-add {
+    margin: auto;
+    border: 1px dashed #4B369D ;
+    width: 342.9px;
+    height: 55.8px;
+    text-align: center;
+    padding-top: 12px;
+}
+
+h3 {
+    /* font, font-size, font-family, padding-bottom, */
+}
