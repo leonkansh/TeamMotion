@@ -1,0 +1,24 @@
+.input-name {
+    border: .1px solid #C4C4C4;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    width: 288px;
+    font-size: large;
+}
+
+.input-group {
+    padding-top: 23px;
+    padding-left: 59px;
+    padding-bottom: 31px;
+}
+
+.input-time {
+    border: .1px solid #C4C4C4;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    width: 68px;
+    font-size: large;
+    text-align: center;
+}
