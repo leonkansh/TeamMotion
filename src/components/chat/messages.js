@@ -26,7 +26,7 @@ function Message(msg) {
             break;
     }
     return (
-        <div style={flagStyle}>
+        <div style={flagStyle} key={msg._id}>
             <div style={flagStyleBar}></div>
             <div style={{
                 height: '50px',
@@ -52,7 +52,7 @@ function Message(msg) {
                         fontFamily: 'Poppins, sans-serif',
                         fontWeight: 700,
                         fontSize: 14
-                    }}>{msg.sender.name}</p>
+                    }}>{msg.sender.displayName}</p>
                     <p style={{
                         color: '#808191',
                         fontFamily: 'Poppins, sans-serif',
@@ -84,7 +84,7 @@ export default function Messages(props) {
     })
     
     return (
-        <Paper elevation='0' sx={{
+        <Paper elevation={0} sx={{
             marginTop: 1,
             marginBottom: 10,
             width: '100vw',

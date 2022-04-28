@@ -1,7 +1,7 @@
 import React from 'react';
 import IconButton from '@mui/material/IconButton';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import Stack from '@mui/material/Stack';
 import Input from '@mui/material/Input';
 import TextField from '@mui/material/TextField';
@@ -15,6 +15,8 @@ export default function TodoCreation() {
     const goBack = () => {
         history.goBack()
     }
+
+    const { orgid, teamid } = useParams();
 
     const [todo_content, setTodoName] = React.useState('');
     const [selected_assignment, setSelectedAssignment] = React.useState({ id: "", name: "" });
@@ -165,7 +167,7 @@ export default function TodoCreation() {
                         </TextField>
                     </Stack>
                     <Button
-                        href="/tasks"
+                        href={`/orgs/${orgid}/teams/${teamid}/tasks`}
                         variant="contained"
                         sx={{ position: "relative", bottom: 80, left: 230 }}
                         onClick={postTodo}

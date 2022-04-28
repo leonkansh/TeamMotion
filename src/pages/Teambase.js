@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import HeaderBar from '../components/nav/HeaderBar';
 import BottomNavBar from '../components/nav/BottomNavbar';
 import { Divider } from '@mui/material';
@@ -12,7 +12,8 @@ const orgid = "6263d2fb17033b23e05c0401";
 const teamid = "1";
 
 export default function Teambase() {
-    const meetingPath = "/teambase/meetings";
+    const { orgid, teamid } = useParams();
+    const meetingPath = `/orgs/${orgid}/teams/${teamid}/teambase/meetings`;
 
     const [isLoaded, setIsLoaded] = React.useState(false);
     const [meetings, setMeetings] = React.useState([]);

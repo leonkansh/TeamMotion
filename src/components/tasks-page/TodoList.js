@@ -18,6 +18,7 @@ export default function TodoList() {
         // or, useEffect either assignment_id or todo_list is changed
     }
 
+    // FIXME: Use url params for org/team, not touching just in case
     const changeComplete = async (todoId, completed, assignmentId) => {
         const todo = { todoId: todoId, completed: completed };
         fetch(`http://localhost:3000/api/assignments/6263d2fb17033b23e05c0401/${assignmentId}/team/1`, {

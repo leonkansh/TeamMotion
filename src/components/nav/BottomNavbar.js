@@ -6,7 +6,7 @@ import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import { UsersThree, ChatCircle, Lightbulb, ListChecks } from "phosphor-react";
 import Paper from '@mui/material/Paper';
 import { makeStyles } from '@mui/styles';
-import { Link as RouterLink, useLocation } from 'react-router-dom';
+import { Link as RouterLink, useLocation, useParams } from 'react-router-dom';
 
 const useStyles = makeStyles({
     root: {
@@ -26,22 +26,25 @@ const LinkBehavior = React.forwardRef((props, ref) => (
     <RouterLink ref={ref} to="/" {...props} />
 ));
 
-function linkScreenToPath(routeName) {
-    routeName = routeName.split("/")[1];
-    if ("teambase" === routeName) return 0;
-    else if ("chats" === routeName) return 1;
-    else if ("reflections" === routeName) return 2;
-    else if ("tasks" === routeName) return 3;
+function linkScreenToPath(pathname) {
+    pathname = pathname.split("/")[5];
+    if ("teambase" === pathname) return 0;
+    else if ("chats" === pathname) return 1;
+    else if ("reflections" === pathname) return 2;
+    else if ("tasks" === pathname) return 3;
     else return -1;
 }
 
-export default function FixedBottomNavigation() {
+export default function FixedBottomNavigation(props) {
+    const { orgid, teamid } = useParams();
     const pathname = useLocation().pathname;
     const [value, setValue] = React.useState(linkScreenToPath(pathname));
 
     const ref = React.useRef(null);
 
     const classes = useStyles();
+
+    const urlPrepend = `/orgs/${orgid}/teams/${teamid}`;
 
     return (
         <Box sx={{ pb: 7 }} ref={ref}>
@@ -53,10 +56,10 @@ export default function FixedBottomNavigation() {
                     onChange={(event, newValue) => setValue(newValue)}
                     className={classes.root}
                 >
-                    <BottomNavigationAction icon={<UsersThree size={32} />} component={RouterLink} to="/teambase" />
-                    <BottomNavigationAction icon={<ChatCircle size={32} />} component={RouterLink} to="/chats" />
-                    <BottomNavigationAction icon={<Lightbulb size={32} />} component={RouterLink} to="/reflections" />
-                    <BottomNavigationAction icon={<ListChecks size={32} />} component={RouterLink} to="/tasks" />
+                    <BottomNavigationAction icon={<UsersThree size={32} />} component={RouterLink} to={`${urlPrepend}/teambase`} />
+                    <BottomNavigationAction icon={<ChatCircle size={32} />} component={RouterLink} to={`${urlPrepend}/chats`} />
+                    <BottomNavigationAction icon={<Lightbulb size={32} />} component={RouterLink} to={`${urlPrepend}/reflections`} />
+                    <BottomNavigationAction icon={<ListChecks size={32} />} component={RouterLink} to={`${urlPrepend}/tasks`} />
                 </BottomNavigation>
             </Paper>
         </Box >
