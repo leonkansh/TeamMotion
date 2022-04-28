@@ -45,7 +45,9 @@ export default function Teambase() {
                 <div>
                     <div className='rows'>
                         <h3 className='row'>Meeting Times</h3>
-                        {meetings.length > 0 && (<button className='row'>Edit</button>)}
+                        {meetings.length > 0 && (
+                            <Link to={meetingPath}><button className='row'>Edit</button></Link>
+                        )}
                     </div>
                     <Divider/>
                     {meetings.length < 1 ? (
