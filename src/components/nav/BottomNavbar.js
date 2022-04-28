@@ -26,12 +26,12 @@ const LinkBehavior = React.forwardRef((props, ref) => (
     <RouterLink ref={ref} to="/" {...props} />
 ));
 
-function linkScreenToPath(routeName) {
-    routeName = routeName.split("/")[1];
-    if ("teambase" === routeName) return 0;
-    else if ("chats" === routeName) return 1;
-    else if ("reflections" === routeName) return 2;
-    else if ("tasks" === routeName) return 3;
+function linkScreenToPath(pathname) {
+    pathname = pathname.split("/")[5];
+    if ("teambase" === pathname) return 0;
+    else if ("chats" === pathname) return 1;
+    else if ("reflections" === pathname) return 2;
+    else if ("tasks" === pathname) return 3;
     else return -1;
 }
 
