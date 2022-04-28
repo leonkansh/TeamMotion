@@ -41,11 +41,16 @@ export default function Meeting() {
         // so it renders a new InputGroup with placeholder
     }
 
-    const saveMeeting = () => {
-        // TODO: 
-        // revert start and end time
-        // call POST api
-        // route to Teambase
+    const saveMeeting = async () => {
+        const body = { name: "Meeting Times", meetingTimes: meetings }
+        console.log("body", body);
+        fetch(`http://localhost:3000/api/charters/${orgid}/${teamid}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(body)
+        }).catch(e => console.log("error", e));
     }
 
     return (
@@ -81,7 +86,7 @@ export default function Meeting() {
 
                         {/* saveMeeting : body = meetings */}
                         <Link to={`/orgs/${orgid}/teams/${teamid}/teambase`}>
-                            <button onClick={e => console.log("post and go back")}>Save</button>
+                            <button onClick={e => saveMeeting()}>Save</button>
                         </Link>
                     </Stack>
                 </div>
