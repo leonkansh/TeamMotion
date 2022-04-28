@@ -7,10 +7,6 @@ import { Plus } from "phosphor-react";
 import './Teambase.css'
 import MeetingCard from '../components/teambase/MeetingCard';
 
-const domain = "localhost:3000";
-const orgid = "6263d2fb17033b23e05c0401";
-const teamid = "1";
-
 export default function Teambase() {
     const { orgid, teamid } = useParams();
     const meetingPath = `/orgs/${orgid}/teams/${teamid}/teambase/meetings`;
@@ -21,7 +17,7 @@ export default function Teambase() {
     const [goals, setGoals] = React.useState([]);
 
     const loadPosts = async () => {
-        await fetch(`http://${domain}/api/charters/${orgid}/${teamid}`)
+        await fetch(`http://localhost:3000/api/charters/${orgid}/${teamid}`)
             .then(res => res.json())
             .then(receivedPosts => {
                 receivedPosts.data.forEach(data => {
