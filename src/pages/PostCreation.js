@@ -1,5 +1,5 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import IconButton from '@mui/material/IconButton';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import TextField from '@mui/material/TextField';
@@ -13,6 +13,8 @@ export default function PostCreation() {
         history.goBack()
     }
 
+
+    const { orgid, teamid } = useParams();
     const [title, setTitle] = React.useState("");
     const [content, setContent] = React.useState("");
     const [date, setDate] = React.useState(new Date());
@@ -20,7 +22,7 @@ export default function PostCreation() {
     const postData = () => {
         setDate(new Date());
         const post = { title, content, date };
-        fetch("http://localhost:3000/api/board/6263d2fb17033b23e05c0401/1", {
+        fetch(`http://localhost:3000/api/board/${orgid}/${teamid}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -60,7 +62,7 @@ export default function PostCreation() {
                     onChange={event => setContent(event.target.value)}
                 />
 
-                <Button href="/reflections" variant="contained" onClick={e => postData()}>Post</Button>
+                <Button href={`/orgs/${orgid}/teams/${teamid}/reflections`} variant="contained" onClick={e => postData()}>Post</Button>
             </Stack>
         </div>
     )

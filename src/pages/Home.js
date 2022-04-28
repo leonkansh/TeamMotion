@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import Link from '@mui/material/Link';
-import { Link as RouterLink } from 'react-router-dom';
 import Orgs from '../components/home/orgs';
+import { Box }  from '@mui/material';
 
+/*
 const LinkBehavior = React.forwardRef((props, ref) => (
     <RouterLink ref={ref} to="/" {...props} />
 ));
+*/
 
 export default function Home() {
     const [self, setSelf] = useState(null);
-    const [targetOrg, setTargetOrg] = useState(null);
-    const [targetTeamId, setTargetTeamid] = useState(-1);
     
     function getSelf() {
         fetch('http://localhost:3000/api/users/self')
@@ -28,12 +27,13 @@ export default function Home() {
     // if self.status=='success', load orgs
     let page = (
         <div>
-            Home page: Choose your team
             <Box sx={{ typography: 'body1' }}>
-                <Link component={RouterLink} to="/teambase">Go to your teambase</Link>
+                <p>Not logged in</p>
+                {/*<Link component={RouterLink} to="/teambase">Go to your teambase</Link>*/}
             </Box>
         </div>
     );
+
     if(self != null && self.status == 'success') {
         // process orgs into div
         // process admin into div
@@ -63,11 +63,6 @@ export default function Home() {
             >
                 {greeting}
                 {Orgs(self.orgs)}
-                <Box sx={{ typography: 'body1' }}>
-                    <Link component={RouterLink} to={{ pathname:"/summary",
-                    state: {orgid:targetOrg, teamid:targetTeamId, userid:self._id }}}
-                >Go to your teambase</Link>
-                </Box>
             </div>
         );
     }

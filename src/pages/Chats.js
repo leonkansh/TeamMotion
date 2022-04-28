@@ -1,12 +1,9 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import HeaderBar from '../components/nav/HeaderBar';
 import BottomNavBar from '../components/nav/BottomNavbar';
 import Messages from '../components/chat/messages';
 import TextBox from '../components/chat/textbox'
-
-let orgid = '6263d2fb17033b23e05c0401'
-let teamid = '1'
 
 /*
     Styling Reference:
@@ -14,11 +11,8 @@ let teamid = '1'
 */
 
 export default function Chats() {
-    const [isLoaded, setIsLoaded] = useState(false);
+    const { orgid, teamid } = useParams();
     const [msgData, setMsgData] = useState([]);
-    const location = useLocation();
-    const userData = location.state;
-    console.log(userData)
 
     const loadMsgs = () => {
         fetch(`http://localhost:3000/api/msg/${orgid}/${teamid}`)

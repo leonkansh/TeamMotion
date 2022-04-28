@@ -5,15 +5,17 @@ import TodoList from '../components/tasks-page/TodoList';
 import AssignmentList from '../components/tasks-page/AssignmentList';
 import AddButton from '../components/common/AddButton';
 import { AssignmentContext } from './AssignmentContext';
+import { useParams } from 'react-router-dom';
 
 export default function Tasks() {
     const [isLoaded, setIsLoaded] = React.useState(false);
     const [data, setData] = React.useState([]);
     const [assignment_id, setAssignmentId] = React.useState();
     const [todo_list, setTodoList] = React.useState([]);
+    const { orgid, teamid } = useParams();
 
     const loadAssignments = async () => {
-        await fetch("http://localhost:3000/api/assignments/6263d2fb17033b23e05c0401/team/1")
+        await fetch(`http://localhost:3000/api/assignments/${orgid}/team/${teamid}`)
             .then(res => res.json())
             .then(receivedData => {
                 setData(receivedData);
@@ -31,7 +33,8 @@ export default function Tasks() {
         loadAssignments();
     }, []);
 
-    const todoPath = "/tasks/create-todo";
+    const urlPrepend = `/orgs/${orgid}/teams/${teamid}`;
+    const todoPath = `${urlPrepend}/tasks/create-todo`;
 
     return (
         <div>
