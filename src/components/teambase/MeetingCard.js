@@ -2,7 +2,19 @@ import React from 'react';
 import Box from '@mui/material/Box';
 
 export default function MeetingCard({ meeting }) {
-    console.log(meeting);
+    const convertTime = (time) => {
+        const hour = Math.trunc(time);
+        let minute = (time % 1) * 60;
+        minute = minute < 10 ? `0${minute}` : minute;
+        return `${hour}:${minute}`;
+    }
+
+    const convertDay = (day) => {
+        if (day > 7 && day < 0) return;
+        const days = ["Mondays", "Tuesdays", "Wednesdays", "Thursdays", "Fridays", "Saturdays", "Sundays"];
+        return days[day];
+    }
+
     return (
         <Box
             sx={{
@@ -18,8 +30,8 @@ export default function MeetingCard({ meeting }) {
             }}
         >
             <h2>{meeting.name}</h2>
-            <p>{`${meeting.start} ~ ${meeting.end}`}</p>
-            <p>{meeting.weekday}</p>
+            <p>{`${convertTime(meeting.start)} ~ ${convertTime(meeting.end)}`}</p>
+            <p>{convertDay(meeting.weekday)}</p>
         </Box>
     );
 }
