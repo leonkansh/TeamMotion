@@ -68,6 +68,7 @@ export default function Meeting() {
                         {meetings.map((meeting, index) => {
                             return (
                                 <InputGroup
+                                    meetings={meetings}
                                     setMeetings={setMeetings}
                                     meeting={meeting}
                                     index={index}
@@ -78,7 +79,7 @@ export default function Meeting() {
                         {/* addMeeting */}
                         <button>Add Meeting Time</button>
 
-                        {/* saveMeeting */}
+                        {/* saveMeeting : body = meetings */}
                         <Link to={`/orgs/${orgid}/teams/${teamid}/teambase`}>
                             <button onClick={e => console.log("post and go back")}>Save</button>
                         </Link>

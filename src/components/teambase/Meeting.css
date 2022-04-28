@@ -3,14 +3,18 @@
     border-top: none;
     border-left: none;
     border-right: none;
-    width: 288px;
+    width: 270px;
     font-size: large;
 }
 
 .input-group {
+    position: relative;
     padding-top: 23px;
     padding-left: 59px;
     padding-bottom: 31px;
+    border: 1px solid #4B369D;
+    border-radius: 15px;
+    margin: 12.5px;
 }
 
 .input-time {
@@ -21,4 +25,12 @@
     width: 68px;
     font-size: large;
     text-align: center;
+}
+
+.inline-div {
+    display: inline-flex;
+}
+
+.container {
+    position: relative;
 }
