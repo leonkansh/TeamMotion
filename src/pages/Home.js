@@ -12,7 +12,7 @@ export default function Home() {
         <div>
             Home page: Choose your team
             <Box sx={{ typography: 'body1' }}>
-                <Link component={RouterLink} to="/summary">Go to your team summary</Link>
+                <Link component={RouterLink} to="/teambase">Go to your teambase</Link>
             </Box>
         </div>
     )
