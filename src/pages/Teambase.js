@@ -35,7 +35,7 @@ export default function Teambase() {
     React.useEffect(() => {
         // fetch meeting times from api
         loadPosts();
-    }, [meetings]); /** TODO: handle profiles and goals */
+    }, []);
 
     return (
         <div className='container'>

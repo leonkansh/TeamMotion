@@ -12,12 +12,10 @@ export default function Meeting() {
     const goBack = () => {
         history.goBack()
     }
-
     const { orgid, teamid } = useParams();
-
-    /** TODO: store meeting_obj_list as useState : update entire list everytime */
     const [meetings, setMeetings] = React.useState([]);
     const [isLoaded, setIsLoaded] = React.useState(false);
+    const [num, setNum] = React.useState(meetings.length);
 
     const loadMeetings = async () => {
         await fetch(`http://localhost:3000/api/charters/${orgid}/${teamid}/single?name=Meeting Times`)
@@ -35,15 +33,22 @@ export default function Meeting() {
         loadMeetings();
     }, []);
 
-    const addMeeting = () => {
-        // TODO:
-        // setMeetings(data + data.push(placeholder))
-        // so it renders a new InputGroup with placeholder
+    const addMeeting = (e) => {
+        e.preventDefault();
+        let data = meetings;
+        data.push({
+            name: null,
+            weekday: null,
+            start: null,
+            end: null
+        });
+        setMeetings(data);
+        setNum(num + 1);
     }
 
-    const saveMeeting = async () => {
+    const saveMeeting = async (e) => {
+        e.preventDefault();
         const body = { name: "Meeting Times", meetingTimes: meetings }
-        console.log("body", body);
         fetch(`http://localhost:3000/api/charters/${orgid}/${teamid}`, {
             method: 'PUT',
             headers: {
@@ -80,13 +85,11 @@ export default function Meeting() {
                                 />
                             )
                         })}
-                        
-                        {/* addMeeting */}
-                        <button>Add Meeting Time</button>
 
-                        {/* saveMeeting : body = meetings */}
+                        <button onClick={addMeeting}>Add Meeting Time</button>
+
                         <Link to={`/orgs/${orgid}/teams/${teamid}/teambase`}>
-                            <button onClick={e => saveMeeting()}>Save</button>
+                            <button onClick={saveMeeting}>Save</button>
                         </Link>
                     </Stack>
                 </div>

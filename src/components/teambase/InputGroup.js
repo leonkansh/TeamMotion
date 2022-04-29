@@ -74,6 +74,12 @@ export default function InputGroup({ meetings, setMeetings, meeting, index }) {
 
     const days = ["Mondays", "Tuesdays", "Wednesdays", "Thursdays", "Fridays", "Saturdays", "Sundays"];
 
+    const handleName = (e) => {
+        setName(e.target.value);
+        let data = meetings;
+        data[index].name = e.target.value;
+        setMeetings(data);
+    }
     return (
         <div className='input-group'>
             <Stack>
@@ -83,7 +89,7 @@ export default function InputGroup({ meetings, setMeetings, meeting, index }) {
                     name="name" 
                     value={name} 
                     size="50" 
-                    onChange={e => setName(e.target.value)}
+                    onChange={handleName}
                 />
                 
                 <p>When will it be?</p>
@@ -117,9 +123,9 @@ export default function InputGroup({ meetings, setMeetings, meeting, index }) {
                 
                 <div className='inline-div'>
                     <Clock size={24} />
-                    <input className="input-time" value={start} onChange={handleStart} />
+                    <input className="input-time" value={start < 0 ? 0 : start} onChange={handleStart} />
                     <p> - </p>
-                    <input className="input-time" value={end} onChange={handleEnd} />
+                    <input className="input-time" value={end < 0 ? 0 : end} onChange={handleEnd} />
                 </div>
             </Stack>
         </div>
