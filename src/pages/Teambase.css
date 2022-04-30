@@ -8,10 +8,12 @@
 .btn-add {
     margin: auto;
     border: 1px dashed #4B369D ;
+    border-radius: 15px;
     width: 342.9px;
-    height: 55.8px;
+    height: 53px;
     text-align: center;
     padding-top: 12px;
+    margin-top: 24px;
 }
 
 h3 {
