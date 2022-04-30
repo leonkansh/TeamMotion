@@ -7,6 +7,7 @@ import { Plus } from "phosphor-react";
 import './Teambase.css'
 import MeetingCard from '../components/teambase/MeetingCard';
 import GoalCard from '../components/teambase/GoalCard';
+import EmailCard from '../components/teambase/EmailCard';
 
 export default function Teambase() {
     const { orgid, teamid } = useParams();
@@ -79,6 +80,17 @@ export default function Teambase() {
 
                     <h3>Emails</h3>
                     <Divider/>
+                    {profiles.length < 1 ? (
+                        <Link to={meetingPath}>
+                            <div className="btn-add">
+                                <Plus size={24} color="#4B369D"/>
+                            </div>
+                        </Link>
+                    ) : (
+                        <div className='meeting-list'>
+                            {profiles.map(contact => <EmailCard contact={contact}/>)}
+                        </div>
+                    )}
 
                     <BottomNavBar />
                 </div>
