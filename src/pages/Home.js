@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Orgs from '../components/home/orgs';
 import { Box }  from '@mui/material';
+import { useHistory } from 'react-router-dom';
+import LogoutIcon from '@mui/icons-material/Logout';
+import '@fontsource/poppins';
 
 /*
 const LinkBehavior = React.forwardRef((props, ref) => (
@@ -10,14 +13,39 @@ const LinkBehavior = React.forwardRef((props, ref) => (
 
 export default function Home() {
     const [self, setSelf] = useState(null);
+    const history = useHistory();
     
     function getSelf() {
-        fetch('http://localhost:3000/api/users/self')
+        fetch('http://localhost:3000/api/users/self', {
+            credentials: 'include'
+        })
             .then((res) => res.json())
-            .then((data) => {setSelf(data)})
+            .then((data) => {
+                if(data.status == 'success') {
+                    setSelf(data)
+                } else {
+                    history.push('/');
+                }
+            })
             .catch((error) => {
                 console.log({status: 'error', error: 'fetch error'});
             });
+    }
+    function signout() {
+        fetch('http://localhost:3000/login/signout', {
+            credentials: 'include',
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' }
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                if(data.status == 'success') {
+                    history.push('/')
+                } else {
+                    console.log('unexpected error')
+                }
+            })
+            .catch((error) => console.log('signout error', error));
     }
     useEffect(() => {
         getSelf();
@@ -31,6 +59,10 @@ export default function Home() {
                 <p>Not logged in</p>
                 {/*<Link component={RouterLink} to="/teambase">Go to your teambase</Link>*/}
             </Box>
+            <button onClick={e => {
+                e.preventDefault();
+                history.push('/');
+            }}>Return Home</button>
         </div>
     );
 
@@ -40,29 +72,57 @@ export default function Home() {
         let greeting = (
             <div style={{
                 display: 'flex',
-                alignItems: 'center'
+                alignItems: 'center',
+                marginTop: '50px',
+                marginBottom: '63px'
             }}>
                 <div style={{
-                    height: '50px',
-                    width: '50px',
+                    height: '70px',
+                    width: '70px',
                     backgroundColor: '#EFEFEF',
                     borderRadius: '50%',
-                    marginTop: '20px',
-                    marginLeft: '17px',
-                    marginRight: '15px'
+                    marginLeft: '39px',
+                    marginRight: '28px'
                 }}></div>
-                <p>Hi {self.displayName}, here are your teams:</p>
+                <p style={{
+                    color: '#4B369D',
+                    fontFamily: 'Poppins, sans-serif',
+                    fontStyle: 'normal',
+                    fontWeight: 400,
+                    fontSize: '24px',
+                    lineHeight: '36px'
+                }}>Hi {self.displayName},<br></br>here are your teams:</p>
             </div>
         )
         page = (
             <div style={{
                     display: 'flex',
-                    flexDirection: 'column',
-                    gap: '70px'
+                    flexDirection: 'column'
                     }}
             >
                 {greeting}
                 {Orgs(self.orgs)}
+                <div onClick={e => {
+                    e.preventDefault();
+                    signout();
+                }} style={{
+                    marginLeft: '280px',
+                    marginTop: '20px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    cursor: 'pointer'
+                }}>
+                    <p style={{
+                        fontFamily: 'Poppins, sans-serif',
+                        fontStyle: 'normal',
+                        fontWeight: 500,
+                        fontSize: '18px',
+                        lineHeight: '27px',
+                        color: '#4B369D',
+                        marginRight: '10px'
+                    }}>Sign Out</p>
+                    <LogoutIcon size='large' sx={{color: '#4B369D'}}></LogoutIcon>
+                </div>
             </div>
         );
     }
