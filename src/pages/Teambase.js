@@ -6,6 +6,7 @@ import { Divider } from '@mui/material';
 import { Plus } from "phosphor-react";
 import './Teambase.css'
 import MeetingCard from '../components/teambase/MeetingCard';
+import GoalCard from '../components/teambase/GoalCard';
 
 export default function Teambase() {
     const { orgid, teamid } = useParams();
@@ -64,6 +65,17 @@ export default function Teambase() {
                     
                     <h3>Team Goals</h3>
                     <Divider/>
+                    {goals.length < 1 ? (
+                        <Link to={meetingPath}>
+                            <div className="btn-add">
+                                <Plus size={24} color="#4B369D"/>
+                            </div>
+                        </Link>
+                    ) : (
+                        <div className='meeting-list'>
+                            {goals.map(goal => <GoalCard goal={goal}/>)}
+                        </div>
+                    )}
 
                     <h3>Emails</h3>
                     <Divider/>
