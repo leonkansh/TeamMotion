@@ -24,8 +24,12 @@ h3 {
     margin-bottom: 13px;
 }
 
-.rows .row {
-    /* TODO: align section-title and btn-edit correctly */
-    display: inline-block;
-    justify-content: space-evenly;
+.section-break {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-edit {
+    margin-top: 15px;
+    margin-right: 20px;
 }

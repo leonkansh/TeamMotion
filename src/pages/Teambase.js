@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import HeaderBar from '../components/nav/HeaderBar';
 import BottomNavBar from '../components/nav/BottomNavbar';
 import { Divider } from '@mui/material';
-import { Plus } from "phosphor-react";
+import { Plus, PencilSimple } from "phosphor-react";
 import './Teambase.css'
 import MeetingCard from '../components/teambase/MeetingCard';
 import GoalCard from '../components/teambase/GoalCard';
@@ -18,7 +18,7 @@ export default function Teambase() {
     const [profiles, setProfiles] = React.useState([]);
     const [goals, setGoals] = React.useState([]);
 
-    const loadPosts = async () => {
+    const loadCharters = async () => {
         await fetch(`http://localhost:3000/api/charters/${orgid}/${teamid}`)
             .then(res => res.json())
             .then(receivedPosts => {
@@ -35,8 +35,7 @@ export default function Teambase() {
             })
     }
     React.useEffect(() => {
-        // fetch meeting times from api
-        loadPosts();
+        loadCharters();
     }, []);
 
     return (
@@ -45,10 +44,10 @@ export default function Teambase() {
             {!isLoaded && <p>Loading...</p>}
             {isLoaded && (
                 <div>
-                    <div className='rows'>
-                        <h3 className='row'>Meeting Times</h3>
+                    <div className='section-break'>
+                        <h3>Meeting Times</h3>
                         {meetings.length > 0 && (
-                            <Link to={meetingPath}><button className='row'>Edit</button></Link>
+                            <Link className="btn-edit" to={meetingPath}><PencilSimple size={30} color='#4B369D' /></Link>
                         )}
                     </div>
                     <Divider/>
