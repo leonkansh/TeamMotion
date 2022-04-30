@@ -1,5 +1,5 @@
 import React from 'react';
-import Box from '@mui/material/Box';
+import './Meeting.css';
 
 export default function MeetingCard({ meeting }) {
     const convertTime = (time) => {
@@ -16,22 +16,10 @@ export default function MeetingCard({ meeting }) {
     }
 
     return (
-        <Box
-            sx={{
-                bgcolor: 'white',
-                borderRadius: 8,
-                minWidth: 'auto',
-                minHeight: 196,
-                pt: 0.5,
-                pl: 4,
-                pr: 4,
-                pb: 0.5,
-                mb: 2
-            }}
-        >
-            <h2>{meeting.name}</h2>
-            <p>{`${convertTime(meeting.start)} ~ ${convertTime(meeting.end)}`}</p>
-            <p>{convertDay(meeting.weekday)}</p>
-        </Box>
+        <div className="meeting-card">
+            <h2 className="card-name">{meeting.name}</h2>
+            <p className="card-field">{`${convertTime(meeting.start)} ~ ${convertTime(meeting.end)}`}</p>
+            <p className="card-field">{convertDay(meeting.weekday)}</p>
+        </div>
     );
 }
