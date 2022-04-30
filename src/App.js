@@ -10,6 +10,8 @@ import PostCreation from './pages/PostCreation';
 // import CharterTemplate from './pages/CharterTemplate';
 // import CharterCreation from './pages/CharterCreation';
 import Meeting from './components/teambase/Meeting';
+import Landing from './pages/Landing';
+import Signup from './pages/Signup';
 
 function App() {
     const orgPrepend = '/orgs/:orgid/teams/:teamid';
@@ -17,7 +19,11 @@ function App() {
     return (
         <Router>
             <Switch>
-                <Route exact path="/" component={Home} />
+                <Route exact path='/' component={Landing} />
+
+                <Route exact path='/signup' component={Signup}/>
+
+                <Route exact path="/home" component={Home} />
 
                 <Route exact path={`${orgPrepend}/tasks`} component={Tasks} />
                 <Route path={`${orgPrepend}/tasks/create-todo`} component={TodoCreation} />
