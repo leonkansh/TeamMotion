@@ -1,49 +1,27 @@
 import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import IconButton from '@mui/material/IconButton';
-import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
-import { Link as RouterLink } from 'react-router-dom';
+import { House } from "phosphor-react";
+import { Link } from 'react-router-dom';
+import './HeaderBar.css';
 
-const LinkBehavior = React.forwardRef((props, ref) => (
-    <RouterLink ref={ref} to="/" {...props} />
-));
-
+/**
+ * @screenname { team name passed as string in a prop } 
+ * @returns Rendering a house icon to go home screen and (TODO)click to edit team name
+ */
 export default function HeaderBar({ screenname }) {
+    const btnHomeStyle = {
+        paddingLeft: "20px",
+        position: "absolute"
+    }
+    
     return (
-        <Box>
-            <AppBar position="static">
-                <Toolbar>
-                    {/* FIXME: center align screen name from homebtn to rightest */}
-                    <IconButton
-                        size="large"
-                        edge="start"
-                        color="inherit"
-                        aria-label="home"
-                        sx={{ mr: 2 }}
-                        component={RouterLink}
-                        to="/"
-                    >
-                        <HomeOutlinedIcon />
-                    </IconButton>
-                    <Box
-                        sx={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            flexDirection: 'column'
-                        }}
-                    >
-                        <Typography variant="h6" component="p" sx={{ flexGrow: 1 }}>
-                            {screenname}
-                        </Typography>
-                        <Typography variant="h8" component="p" sx={{ flexGrow: 1 }}>
-                            Team Name
-                        </Typography>
-                    </Box>
-                </Toolbar>
-            </AppBar>
-        </Box>
+        <div className='header-1-container'>
+            <Link className="btn-home" to="/" style={btnHomeStyle}>
+                <House size={35} color="#383E56"/>
+            </Link>
+            <div className='header-title'>
+                {/* TODO: click to change team name */}
+                <p>{screenname}</p>
+            </div>
+        </div>
     );
 }
