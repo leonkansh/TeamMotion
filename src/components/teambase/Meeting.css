@@ -5,6 +5,8 @@
     border-right: none;
     width: 270px;
     font-size: large;
+    font-family: 'Poppins';
+    color: #4B369D;
 }
 
 .input-group {
@@ -94,4 +96,17 @@ p, h1, h2, h3 {
     height: 50px;
     color: #FFFFFF;
     background-color: #4B369D;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #4B369D;
+    opacity: 0.5; /* Firefox */
+  }
+  
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #4B369D;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: #4B369D;
 }

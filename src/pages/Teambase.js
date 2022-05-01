@@ -4,14 +4,16 @@ import HeaderBar from '../components/nav/HeaderBar';
 import BottomNavBar from '../components/nav/BottomNavbar';
 import { Divider } from '@mui/material';
 import { Plus, PencilSimple } from "phosphor-react";
-import './Teambase.css'
 import MeetingCard from '../components/teambase/MeetingCard';
 import GoalCard from '../components/teambase/GoalCard';
 import EmailCard from '../components/teambase/EmailCard';
+import './Teambase.css'
 
 export default function Teambase() {
     const { orgid, teamid } = useParams();
     const meetingPath = `/orgs/${orgid}/teams/${teamid}/teambase/meetings`;
+    const goalPath = `/orgs/${orgid}/teams/${teamid}/teambase/goals`;
+    const emailPath = `/orgs/${orgid}/teams/${teamid}/teambase/emails`;
 
     const [isLoaded, setIsLoaded] = React.useState(false);
     const [meetings, setMeetings] = React.useState([]);
@@ -63,7 +65,12 @@ export default function Teambase() {
                         </div>
                     )}
                     
-                    <h3>Team Goals</h3>
+                    <div className='section-break'>
+                        <h3>Team Goals</h3>
+                        {meetings.length > 0 && (
+                            <Link className="btn-edit" to={goalPath}><PencilSimple size={30} color='#4B369D' /></Link>
+                        )}
+                    </div>
                     <Divider/>
                     {goals.length < 1 ? (
                         <Link to={meetingPath}>
@@ -77,10 +84,15 @@ export default function Teambase() {
                         </div>
                     )}
 
-                    <h3>Emails</h3>
+                    <div className='section-break'>
+                        <h3>Emails</h3>
+                        {meetings.length > 0 && (
+                            <Link className="btn-edit" to={emailPath}><PencilSimple size={30} color='#4B369D' /></Link>
+                        )}
+                    </div>
                     <Divider/>
                     {profiles.length < 1 ? (
-                        <Link to={meetingPath}>
+                        <Link to={emailPath}>
                             <div className="btn-add">
                                 <Plus size={24} color="#4B369D"/>
                             </div>
