@@ -1,18 +1,15 @@
 import React from 'react';
-import { useHistory, useParams, Link } from 'react-router-dom';
-import IconButton from '@mui/material/IconButton';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import Stack from '@mui/material/Stack';
-import './Meeting.css';
+import { useHistory, useParams } from 'react-router-dom';
 import InputGroup from './InputGroup';
+import Stack from '@mui/material/Stack';
+import HeaderBarBackArrow from '../nav/HeaderBarBackArrow'
+import './Meeting.css';
 
 export default function Meeting() {
-    const header = "Add Meeting";
     const history = useHistory()
-    const goBack = () => {
-        history.goBack()
-    }
+    const goBack = () => history.goBack();
     const { orgid, teamid } = useParams();
+    const teambasePath = `/orgs/${orgid}/teams/${teamid}/teambase`;
     const [meetings, setMeetings] = React.useState([]);
     const [isLoaded, setIsLoaded] = React.useState(false);
     const [num, setNum] = React.useState(meetings.length);
@@ -56,6 +53,7 @@ export default function Meeting() {
             },
             body: JSON.stringify(body)
         }).catch(e => console.log("error", e));
+        history.push(teambasePath);
     }
 
     return (
@@ -63,17 +61,7 @@ export default function Meeting() {
             {!isLoaded && <p>Loading...</p>}
             {isLoaded && (
                 <div>
-                    <IconButton
-                        size="large"
-                        edge="start"
-                        color="inherit"
-                        aria-label="home"
-                        sx={{ mr: 2, color: "primary.main", left: 22, top: 23 }}
-                        onClick={goBack}
-                    >
-                        <ArrowBackIcon sx={{ fontSize: 35 }} />
-                    </IconButton>
-
+                    <HeaderBarBackArrow screenname="Meeting Times" />
                     <Stack>
                         {meetings.map((meeting, index) => {
                             return (
@@ -85,12 +73,10 @@ export default function Meeting() {
                                 />
                             )
                         })}
-
-                        <button onClick={addMeeting}>Add Meeting Time</button>
-
-                        <Link to={`/orgs/${orgid}/teams/${teamid}/teambase`}>
-                            <button onClick={saveMeeting}>Save</button>
-                        </Link>
+                        <div className='group-btns'>
+                            <button className="btn-add-more" onClick={addMeeting}>Add Meeting Time</button>                            
+                            <button className="btn-save" onClick={saveMeeting}>Save</button>
+                        </div>
                     </Stack>
                 </div>
             )}
