@@ -1,13 +1,12 @@
 import React from 'react';
 import { useHistory, useParams } from 'react-router-dom';
-import InputGroup from './InputGroup';
+import MeetingsInputGroup from './MeetingsInputGroup';
 import Stack from '@mui/material/Stack';
 import HeaderBarBackArrow from '../nav/HeaderBarBackArrow'
 import './Meeting.css';
 
 export default function Meeting() {
     const history = useHistory()
-    const goBack = () => history.goBack();
     const { orgid, teamid } = useParams();
     const teambasePath = `/orgs/${orgid}/teams/${teamid}/teambase`;
     const [meetings, setMeetings] = React.useState([]);
@@ -65,7 +64,7 @@ export default function Meeting() {
                     <Stack>
                         {meetings.map((meeting, index) => {
                             return (
-                                <InputGroup
+                                <MeetingsInputGroup
                                     meetings={meetings}
                                     setMeetings={setMeetings}
                                     meeting={meeting}

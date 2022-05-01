@@ -88,7 +88,8 @@ export default function InputGroup({ meetings, setMeetings, meeting, index }) {
                     type="text" 
                     name="name" 
                     value={name} 
-                    size="50" 
+                    size="50"
+                    placeholder='Meeting Name'
                     onChange={handleName}
                 />
                 
@@ -123,9 +124,9 @@ export default function InputGroup({ meetings, setMeetings, meeting, index }) {
                 
                 <div className='inline-div'>
                     <Clock size={24} />
-                    <input className="input-time" value={start < 0 ? 0 : start} onChange={handleStart} />
+                    <input className="input-time" placeholder="Start" value={start < 0 ? 0 : start} onChange={handleStart} />
                     <p> - </p>
-                    <input className="input-time" value={end < 0 ? 0 : end} onChange={handleEnd} />
+                    <input className="input-time" placeholder="End" value={end < 0 ? 0 : end} onChange={handleEnd} />
                 </div>
             </Stack>
         </div>
