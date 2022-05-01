@@ -15,7 +15,9 @@ export default function Chats() {
     const [msgData, setMsgData] = useState([]);
 
     const loadMsgs = () => {
-        fetch(`http://localhost:3000/api/msg/${orgid}/${teamid}`)
+        fetch(`http://localhost:3000/api/msg/${orgid}/${teamid}`, {
+            credentials: 'include'
+        })
             .then(res => res.json())
             .then(data => setMsgData(data))
             .catch(error => console.log('error'));
@@ -26,6 +28,7 @@ export default function Chats() {
             console.log(`FETCH POST: ${text}`);
             await fetch(`http://localhost:3000/api/msg/${orgid}/${teamid}`,
             {
+                credentials: 'include',
                 headers: {
                     'Content-Type': 'application/json'
                 },
