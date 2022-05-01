@@ -1,8 +1,11 @@
-.container {
-    /* position: relative; */
-    /* width: 500px;
-    height: 500px;
-    background-color: #ffbf00; */
+.profile-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.profile-item {
+    color: #4B369D;
+    text-align: center;
 }
 
 .btn-add {

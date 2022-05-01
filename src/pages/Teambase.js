@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import HeaderBar from '../components/nav/HeaderBar';
 import BottomNavBar from '../components/nav/BottomNavbar';
 import { Divider } from '@mui/material';
-import { Plus, PencilSimple } from "phosphor-react";
+import { Plus, PencilSimple, User } from "phosphor-react";
 import MeetingCard from '../components/teambase/MeetingCard';
 import GoalCard from '../components/teambase/GoalCard';
 import EmailCard from '../components/teambase/EmailCard';
@@ -46,6 +46,18 @@ export default function Teambase() {
             {!isLoaded && <p>Loading...</p>}
             {isLoaded && (
                 <div>
+                    <div className='profile-container'>
+                        {profiles.map((profile, i) => {
+                            return (
+                                <div key={`profile-item-${i}`} className='profile-item'>
+                                    {/* TODO: face-man-profile icon */}
+                                    <User size={70} color="#4B369D" />
+                                    <p>{profile.name}</p>
+                                </div>
+                            )
+                        })}
+                    </div>
+
                     <div className='section-break'>
                         <h3>Meeting Times</h3>
                         {meetings.length > 0 && (
