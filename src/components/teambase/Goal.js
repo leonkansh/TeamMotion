@@ -14,7 +14,9 @@ export default function Goal() {
     const [num, setNum] = React.useState(goals.length);
     console.log("goal.js", goals);
     const loadGoals = async () => {
-        await fetch(`http://localhost:3000/api/charters/${orgid}/${teamid}/single?name=Goals`)
+        await fetch(`http://localhost:3000/api/charters/${orgid}/${teamid}/single?name=Goals`, {
+                credentials: 'include'
+            })
             .then(res => res.json())
             .then(receivedPosts => {
                 setGoals(receivedPosts.data[0].goals);
@@ -41,6 +43,7 @@ export default function Goal() {
         e.preventDefault();
         const body = { name: "Goals", goals: goals }
         fetch(`http://localhost:3000/api/charters/${orgid}/${teamid}`, {
+            credentials: 'include',
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'

@@ -14,7 +14,9 @@ export default function Email() {
     const [num, setNum] = React.useState(profiles.length);
 
     const loadProfiles = async () => {
-        await fetch(`http://localhost:3000/api/charters/${orgid}/${teamid}/single?name=Profile`)
+        await fetch(`http://localhost:3000/api/charters/${orgid}/${teamid}/single?name=Profile`, {
+                credentials: 'include'
+            })
             .then(res => res.json())
             .then(receivedPosts => {
                 setProfiles(receivedPosts.data[0].profile);
@@ -44,6 +46,7 @@ export default function Email() {
         e.preventDefault();
         const body = { name: "Profile", profile: profiles }
         fetch(`http://localhost:3000/api/charters/${orgid}/${teamid}`, {
+            credentials: 'include',
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'

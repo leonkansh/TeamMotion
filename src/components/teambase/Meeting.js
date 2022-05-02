@@ -14,7 +14,9 @@ export default function Meeting() {
     const [num, setNum] = React.useState(meetings.length);
 
     const loadMeetings = async () => {
-        await fetch(`http://localhost:3000/api/charters/${orgid}/${teamid}/single?name=Meeting Times`)
+        await fetch(`http://localhost:3000/api/charters/${orgid}/${teamid}/single?name=Meeting Times`,{
+                credentials: 'include'
+            })
             .then(res => res.json())
             .then(receivedPosts => {
                 setMeetings(receivedPosts.data[0].meetingTimes);
@@ -46,6 +48,7 @@ export default function Meeting() {
         e.preventDefault();
         const body = { name: "Meeting Times", meetingTimes: meetings }
         fetch(`http://localhost:3000/api/charters/${orgid}/${teamid}`, {
+            credentials: 'include',
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'

@@ -21,7 +21,9 @@ export default function Teambase() {
     const [goals, setGoals] = React.useState([]);
 
     const loadCharters = async () => {
-        await fetch(`http://localhost:3000/api/charters/${orgid}/${teamid}`)
+        await fetch(`http://localhost:3000/api/charters/${orgid}/${teamid}`, {
+                credentials: 'include'
+            })
             .then(res => res.json())
             .then(receivedPosts => {
                 receivedPosts.data.forEach(data => {
