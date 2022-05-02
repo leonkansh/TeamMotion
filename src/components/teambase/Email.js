@@ -1,25 +1,25 @@
 import React from 'react';
 import { useHistory, useParams } from 'react-router-dom';
-import MeetingsInputGroup from './MeetingsInputGroup';
+import EmailsInputGroup from './EmailsInputGroup';
 import Stack from '@mui/material/Stack';
 import HeaderBarBackArrow from '../nav/HeaderBarBackArrow'
 import './Meeting.css';
 
-export default function Meeting() {
+export default function Email() {
     const history = useHistory()
     const { orgid, teamid } = useParams();
     const teambasePath = `/orgs/${orgid}/teams/${teamid}/teambase`;
-    const [meetings, setMeetings] = React.useState([]);
+    const [profiles, setProfiles] = React.useState([]);
     const [isLoaded, setIsLoaded] = React.useState(false);
-    const [num, setNum] = React.useState(meetings.length);
+    const [num, setNum] = React.useState(profiles.length);
 
-    const loadMeetings = async () => {
-        await fetch(`http://localhost:3000/api/charters/${orgid}/${teamid}/single?name=Meeting Times`,{
+    const loadProfiles = async () => {
+        await fetch(`http://localhost:3000/api/charters/${orgid}/${teamid}/single?name=Profile`, {
                 credentials: 'include'
             })
             .then(res => res.json())
             .then(receivedPosts => {
-                setMeetings(receivedPosts.data[0].meetingTimes);
+                setProfiles(receivedPosts.data[0].profile);
                 setIsLoaded(true);
             })
             .catch(error => {
@@ -28,25 +28,23 @@ export default function Meeting() {
             })
     }
     React.useEffect(() => {
-        loadMeetings();
+        loadProfiles();
     }, []);
 
-    const addMeeting = (e) => {
+    const addEmail = (e) => {
         e.preventDefault();
-        let data = meetings;
+        let data = profiles;
         data.push({
             name: null,
-            weekday: null,
-            start: null,
-            end: null
+            email: null
         });
-        setMeetings(data);
+        setProfiles(data);
         setNum(num + 1);
     }
 
-    const saveMeeting = async (e) => {
+    const saveEmail = async (e) => {
         e.preventDefault();
-        const body = { name: "Meeting Times", meetingTimes: meetings }
+        const body = { name: "Profile", profile: profiles }
         fetch(`http://localhost:3000/api/charters/${orgid}/${teamid}`, {
             credentials: 'include',
             method: 'PUT',
@@ -63,21 +61,21 @@ export default function Meeting() {
             {!isLoaded && <p>Loading...</p>}
             {isLoaded && (
                 <div>
-                    <HeaderBarBackArrow screenname="Meeting Times" />
+                    <HeaderBarBackArrow screenname="Emails" />
                     <Stack>
-                        {meetings.map((meeting, index) => {
+                        {profiles.map((profile, index) => {
                             return (
-                                <MeetingsInputGroup
-                                    meetings={meetings}
-                                    setMeetings={setMeetings}
-                                    meeting={meeting}
+                                <EmailsInputGroup
+                                    profiles={profiles}
+                                    setProfiles={setProfiles}
+                                    profile={profile}
                                     index={index}
                                 />
                             )
                         })}
                         <div className='group-btns'>
-                            <button className="btn-add-more" onClick={addMeeting}>Add Meeting Time</button>                            
-                            <button className="btn-save" onClick={saveMeeting}>Save</button>
+                            <button className="btn-add-more" onClick={addEmail}>Add Email</button>                            
+                            <button className="btn-save" onClick={saveEmail}>Save</button>
                         </div>
                     </Stack>
                 </div>

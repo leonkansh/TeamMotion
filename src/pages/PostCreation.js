@@ -23,6 +23,7 @@ export default function PostCreation() {
         setDate(new Date());
         const post = { title, content, date };
         fetch(`http://localhost:3000/api/board/${orgid}/${teamid}`, {
+            credentials: 'include',
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

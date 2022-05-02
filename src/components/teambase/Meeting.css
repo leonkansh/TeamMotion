@@ -1,0 +1,112 @@
+.input-name {
+    border: .1px solid #C4C4C4;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    width: 270px;
+    font-size: large;
+    font-family: 'Poppins';
+    color: #4B369D;
+}
+
+.input-group {
+    position: relative;
+    padding-top: 23px;
+    padding-left: 59px;
+    padding-bottom: 31px;
+    border: 1px solid #4B369D;
+    border-radius: 15px;
+    margin: 12.5px;
+}
+
+.input-time {
+    border: .1px solid #C4C4C4;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    width: 68px;
+    font-size: large;
+    text-align: center;
+}
+
+.inline-div {
+    display: inline-flex;
+}
+
+.container {
+    position: relative;
+}
+
+.meeting-card {
+    border: 1px solid #4B369D;
+    border-radius: 8px;
+    margin-top: 23px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.card-name {
+    font-weight: lighter;
+    font-size: 18px;
+    padding-left: 33px;
+    padding-bottom: 0px;
+}
+
+.card-field {
+    font-size: 14;
+    padding-left: 48px;
+}
+
+.card-name, .card-field {
+    color: #4B369D;
+}
+
+p, h1, h2, h3 {
+    font-family: 'Poppins';
+}
+
+.group-btns {
+    display: inline-flex;
+    justify-content: space-evenly;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+.btn-add-more, .btn-save {
+    margin-left: 5vw;
+    margin-right: 5vw;
+    border: 1px solid #4B369D;
+    border-radius: 15px;
+    font-size: 1em;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    line-height: 27px;
+}
+
+.btn-add-more {
+    width: 48vw;
+    height: 50px;
+    color: #4B369D;
+    background-color: white;
+}
+
+.btn-save {
+    width: 37vw;
+    height: 50px;
+    color: #FFFFFF;
+    background-color: #4B369D;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #4B369D;
+    opacity: 0.5; /* Firefox */
+  }
+  
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #4B369D;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+    color: #4B369D;
+}

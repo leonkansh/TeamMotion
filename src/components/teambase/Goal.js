@@ -1,25 +1,25 @@
 import React from 'react';
-import { useHistory, useParams } from 'react-router-dom';
-import MeetingsInputGroup from './MeetingsInputGroup';
+import { useHistory, useParams, Link } from 'react-router-dom';
+import GoalsInputGroup from './GoalsInputGroup';
 import Stack from '@mui/material/Stack';
 import HeaderBarBackArrow from '../nav/HeaderBarBackArrow'
 import './Meeting.css';
 
-export default function Meeting() {
+export default function Goal() {
     const history = useHistory()
     const { orgid, teamid } = useParams();
     const teambasePath = `/orgs/${orgid}/teams/${teamid}/teambase`;
-    const [meetings, setMeetings] = React.useState([]);
+    const [goals, setGoals] = React.useState([]);
     const [isLoaded, setIsLoaded] = React.useState(false);
-    const [num, setNum] = React.useState(meetings.length);
-
-    const loadMeetings = async () => {
-        await fetch(`http://localhost:3000/api/charters/${orgid}/${teamid}/single?name=Meeting Times`,{
+    const [num, setNum] = React.useState(goals.length);
+    console.log("goal.js", goals);
+    const loadGoals = async () => {
+        await fetch(`http://localhost:3000/api/charters/${orgid}/${teamid}/single?name=Goals`, {
                 credentials: 'include'
             })
             .then(res => res.json())
             .then(receivedPosts => {
-                setMeetings(receivedPosts.data[0].meetingTimes);
+                setGoals(receivedPosts.data[0].goals);
                 setIsLoaded(true);
             })
             .catch(error => {
@@ -28,25 +28,20 @@ export default function Meeting() {
             })
     }
     React.useEffect(() => {
-        loadMeetings();
+        loadGoals();
     }, []);
 
-    const addMeeting = (e) => {
+    const addGoal = (e) => {
         e.preventDefault();
-        let data = meetings;
-        data.push({
-            name: null,
-            weekday: null,
-            start: null,
-            end: null
-        });
-        setMeetings(data);
+        let data = goals;
+        data.push(null);
+        setGoals(data);
         setNum(num + 1);
     }
 
-    const saveMeeting = async (e) => {
+    const saveGoal = async (e) => {
         e.preventDefault();
-        const body = { name: "Meeting Times", meetingTimes: meetings }
+        const body = { name: "Goals", goals: goals }
         fetch(`http://localhost:3000/api/charters/${orgid}/${teamid}`, {
             credentials: 'include',
             method: 'PUT',
@@ -63,21 +58,21 @@ export default function Meeting() {
             {!isLoaded && <p>Loading...</p>}
             {isLoaded && (
                 <div>
-                    <HeaderBarBackArrow screenname="Meeting Times" />
+                    <HeaderBarBackArrow screenname="Team Goals" />
                     <Stack>
-                        {meetings.map((meeting, index) => {
+                        {goals.map((goal, index) => {
                             return (
-                                <MeetingsInputGroup
-                                    meetings={meetings}
-                                    setMeetings={setMeetings}
-                                    meeting={meeting}
+                                <GoalsInputGroup
+                                    goals={goals}
+                                    setGoals={setGoals}
+                                    goal={goal}
                                     index={index}
                                 />
                             )
                         })}
                         <div className='group-btns'>
-                            <button className="btn-add-more" onClick={addMeeting}>Add Meeting Time</button>                            
-                            <button className="btn-save" onClick={saveMeeting}>Save</button>
+                            <button className="btn-add-more" onClick={addGoal}>Add Goal</button>                            
+                            <button className="btn-save" onClick={saveGoal}>Save</button>
                         </div>
                     </Stack>
                 </div>

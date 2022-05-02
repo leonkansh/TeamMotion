@@ -22,6 +22,7 @@ export default function TodoList() {
     const changeComplete = async (todoId, completed, assignmentId) => {
         const todo = { todoId: todoId, completed: completed };
         fetch(`http://localhost:3000/api/assignments/6263d2fb17033b23e05c0401/${assignmentId}/team/1`, {
+            credentials: 'include',
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -40,6 +41,7 @@ export default function TodoList() {
     const deleteTodo = async (todoId, assignmentId) => {
         const todo = { todoId: todoId };
         fetch(`http://localhost:3000/api/assignments/6263d2fb17033b23e05c0401/${assignmentId}/team/1`, {
+            credentials: 'include',
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'

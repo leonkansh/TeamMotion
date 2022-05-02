@@ -10,6 +10,8 @@ import PostCreation from './pages/PostCreation';
 // import CharterTemplate from './pages/CharterTemplate';
 // import CharterCreation from './pages/CharterCreation';
 import Meeting from './components/teambase/Meeting';
+import Goal from './components/teambase/Goal';
+import Email from './components/teambase/Email';
 import Landing from './pages/Landing';
 import Signup from './pages/Signup';
 
@@ -32,7 +34,9 @@ function App() {
 
                 <Route exact path={`${orgPrepend}/teambase`} component={Teambase} />
                 <Route path={`${orgPrepend}/teambase/meetings`} component={Meeting} />
-
+                <Route path={`${orgPrepend}/teambase/goals`} component={Goal} />
+                <Route path={`${orgPrepend}/teambase/emails`} component={Email} />
+                
                 {/* DEPRECATED
                 <Route exact path="/charters" component={Charters} />
                 <Route path="/charters/charter-templates" component={CharterTemplate} />

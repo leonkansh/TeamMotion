@@ -1,19 +1,38 @@
-.container {
-    /* position: relative; */
-    /* width: 500px;
-    height: 500px;
-    background-color: #ffbf00; */
+.profile-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.profile-item {
+    color: #4B369D;
+    text-align: center;
 }
 
 .btn-add {
     margin: auto;
     border: 1px dashed #4B369D ;
+    border-radius: 15px;
     width: 342.9px;
-    height: 55.8px;
+    height: 53px;
     text-align: center;
     padding-top: 12px;
+    margin-top: 24px;
 }
 
 h3 {
     /* font, font-size, font-family, padding-bottom, */
+    color: #4B369D;
+    padding-left: 27px;
+    font-family: 'Poppins';
+    margin-bottom: 13px;
+}
+
+.section-break {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-edit {
+    margin-top: 15px;
+    margin-right: 20px;
 }
