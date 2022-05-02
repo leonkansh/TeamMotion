@@ -1,0 +1,76 @@
+p {
+    font-family: Poppins sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    color: #FFFFFF;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+}
+
+.team {
+    margin-left: 27px;
+    margin-bottom: 0;
+    margin-top: 18px;
+}
+
+.org {
+    font-size: 14px;
+    margin-top: 0;
+    margin-left: 27px;
+    max-width: 140px;
+}
+
+.add {
+    color: #4B369D;
+    font-size: 35px; 
+}
+
+.orgBox {
+    background-color: #4B369D;
+    border-radius: 15px;
+    border: 2px solid #FFFFFF;
+    height: 130px;
+    width: 179px;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+.joinBox {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(227,229,252,0.5)
+}
+
+.popup-content {
+    font-family: Poppins;
+    margin: auto;
+    background: rgb(255, 255, 255);
+    width: 50%;
+    padding: 5px;
+}
+
+.popup-arr {
+    color: rgb(255, 255, 255);
+}
+
+[role='tooltip'].popup-content {
+    width: 200px;
+    box-shadow: rgb(0, 0, 0, 0.16) 0px 0px 3px;
+}
+
+.popup-overlay {
+    background:rgb(0, 0, 0, 0.5);
+}
+
+[data-popup='tooltip'].popup-overlay {
+    background: transparent;
+}

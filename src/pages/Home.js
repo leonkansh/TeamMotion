@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Orgs from '../components/home/orgs';
 import { Box }  from '@mui/material';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import LogoutIcon from '@mui/icons-material/Logout';
 import '@fontsource/poppins';
 
@@ -13,7 +13,12 @@ const LinkBehavior = React.forwardRef((props, ref) => (
 
 export default function Home() {
     const [self, setSelf] = useState(null);
+    const [force, setForce] = useState(false);
+    const [joinOrgId, setJoinOrgId] = useState('');
+    const [joinCode, setJoinCode] = useState('');
     const history = useHistory();
+    const useQuery = () => new URLSearchParams(useLocation().search);
+    const query = useQuery();
     
     function getSelf() {
         fetch('http://localhost:3000/api/users/self', {
@@ -31,6 +36,7 @@ export default function Home() {
                 console.log({status: 'error', error: 'fetch error'});
             });
     }
+
     function signout() {
         fetch('http://localhost:3000/login/signout', {
             credentials: 'include',
@@ -47,8 +53,36 @@ export default function Home() {
             })
             .catch((error) => console.log('signout error', error));
     }
+
+    function joinOrg() {
+        if(joinOrgId != '' && joinCode != '') {
+            fetch(`http://localhost:3000/api/org/${joinOrgId}/join`, {
+                credentials: 'include',
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    accessCode: joinCode
+                })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if(data.status == 'success') {
+                    getSelf();
+                }
+            })
+            .catch(error => console.log('error', error));
+        }
+    }
+    
     useEffect(() => {
         getSelf();
+        if (query.get('org')) {
+            setJoinOrgId(query.get('org'));
+            setForce(true);
+            if(query.get('code')) {
+                setJoinCode(query.get('code'));
+            } 
+        }
     }, []);
 
     // if self.status=='error', load login page
@@ -101,7 +135,10 @@ export default function Home() {
                     }}
             >
                 {greeting}
-                {Orgs(self.orgs)}
+                {Orgs(self.orgs, joinOrg,
+                    joinOrgId, setJoinOrgId,
+                    joinCode, setJoinCode,
+                    force, setForce)}
                 <div onClick={e => {
                     e.preventDefault();
                     signout();
