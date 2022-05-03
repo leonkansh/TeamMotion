@@ -1,9 +1,5 @@
 p {
     font-family: Poppins sans-serif;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 18px;
-    color: #FFFFFF;
 }
 
 .wrapper {
@@ -40,6 +36,10 @@ p {
     width: 179px;
     cursor: pointer;
     box-sizing: border-box;
+    color: #FFFFFF;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 18px;
 }
 
 .joinBox {
