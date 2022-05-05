@@ -1,13 +1,12 @@
 import React from 'react';
-import IconButton from '@mui/material/IconButton';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { ArrowLeft } from 'phosphor-react';
 import { useHistory, useParams } from 'react-router-dom';
 import Stack from '@mui/material/Stack';
 import Input from '@mui/material/Input';
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
-import Button from '@mui/material/Button';
 import BottomNavBar from '../components/nav/BottomNavbar';
+import './Tasks.css';
 
 export default function TodoCreation() {
     const history = useHistory()
@@ -98,21 +97,21 @@ export default function TodoCreation() {
         loadMembers();
     }, []);
 
+    const btnHomeStyle = {
+        position: "absolute",
+        marginTop: "23px",
+        marginLeft: "22px"
+    }
+
     return (
         <div>
             {!isLoaded && <p>Loading...</p>}
             {isLoaded && (
-                <div>
-                    <IconButton
-                        size="large"
-                        edge="start"
-                        color="inherit"
-                        aria-label="home"
-                        sx={{ mr: 2, color: "primary.main", left: 22, top: 23 }}
-                        onClick={goBack}
-                    >
-                        <ArrowBackIcon sx={{ fontSize: 35 }} />
-                    </IconButton>
+                <div className='container'>
+                    <button className="btn-back" onClick={goBack} style={btnHomeStyle}>
+                        <ArrowLeft size={35} color="#4B369D" />
+                    </button>
+
                     <Stack
                         component="form"
                         sx={{
@@ -125,12 +124,12 @@ export default function TodoCreation() {
                     >
                         <Input
                             placeholder="To-Do Name"
-                            sx={{ mt: 5, color: "purple", fontSize: 24, maxWidth: 300 }}
+                            sx={{ mt: 6.5, color: "#4B369D", fontSize: 24, maxWidth: 300 }}
                             onChange={handleTodo}
                         />
 
                         <TextField
-                            id="outlined-select-currency"
+                            id="outlined-select-assignment"
                             select
                             label="Assignments"
                             value={selected_assignment.name}
@@ -156,13 +155,12 @@ export default function TodoCreation() {
                         />
 
                         <TextField
-                            id="outlined-select-currency"
+                            id="outlined-select-member"
                             select
                             label="Assignee"
                             value={assignee.name}
                             onChange={handleAssignee}
                             helperText="Please select a member"
-                            sx={{ mb: 15 }}
                         >
                             {members.map((option) => (
                                 <MenuItem key={option.displayName} value={option.displayName}>
@@ -171,14 +169,7 @@ export default function TodoCreation() {
                             ))}
                         </TextField>
                     </Stack>
-                    <Button
-                        href={`/orgs/${orgid}/teams/${teamid}/tasks`}
-                        variant="contained"
-                        sx={{ position: "relative", bottom: 80, left: 230 }}
-                        onClick={postTodo}
-                    >
-                        Add To-do
-                    </Button>
+                    <button className="btn-post" onClick={postTodo}>Add To-do</button>
                     <BottomNavBar />
                 </div>
             )}

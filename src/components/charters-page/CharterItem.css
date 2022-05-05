@@ -95,9 +95,10 @@ textarea {
     height: 50px;
     color: #FFFFFF;
     background-color: #4B369D;
-    margin-top: 5.15vh;
+    margin-top: 3vh;
     margin-left: 57.5vw;
     margin-right: 5.5vw;
+    margin-bottom: 2.15vh;
 }
 
 .reaction-container {
