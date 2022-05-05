@@ -1,11 +1,9 @@
 import { React, useState } from "react";
-import { Box } from '@mui/system';
-import Typography from '@mui/material/Typography';
 import { ButtonBase } from "@mui/material";
 
 const unselectedStyle = {
-    bgcolor: 'text.disabled',
-    border: 1,
+    bgcolor: '#E3E5FC',
+    border: 'none',
     boxShadow: 1,
     borderRadius: 5,
     p: 2,
@@ -14,8 +12,9 @@ const unselectedStyle = {
 };
 
 const selectedStyle = {
-    bgcolor: 'primary.main',
-    border: 1,
+    bgcolor: '#4B369D',
+    color: '#ffffff',
+    border: 'none',
     boxShadow: 1,
     borderRadius: 5,
     p: 2,
@@ -52,19 +51,13 @@ export default function AssignmentCard({ assignment, setAssignmentId, setTodoLis
                 setTodoList(data.find(item => item._id === assignment._id).todos)
             }}
         >
-            <Box>
-                <Typography sx={{ fontSize: 20 }} component="div" >
-                    {assignment.name}
-                </Typography>
+            <div className='assignment-card'>
+                <h4 className="assignment-card-name">{assignment.name}</h4>
 
-                <Typography color="text.secondary" >
-                    Due {convertUTC(assignment.due)}
-                </Typography>
+                <p className="assignment-card-due">Due {convertUTC(assignment.due)}</p>
 
-                <Typography variant="body2">
-                    Leader: {assignment.leader.name}
-                </Typography>
-            </Box>
+                <p className="assignment-card-leader">Leader: {assignment.leader.name}</p>
+            </div>
         </ButtonBase>
     );
 }
