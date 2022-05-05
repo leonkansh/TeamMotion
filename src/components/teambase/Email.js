@@ -45,7 +45,7 @@ export default function Email() {
     const saveEmail = async (e) => {
         e.preventDefault();
         const body = { name: "Profile", profile: profiles }
-        fetch(`http://localhost:3000/api/charters/${orgid}/${teamid}`, {
+        await fetch(`http://localhost:3000/api/charters/${orgid}/${teamid}`, {
             credentials: 'include',
             method: 'PUT',
             headers: {

@@ -83,7 +83,7 @@ export default function TodoCreation() {
     // post a new todo to api
     const postTodo = () => {
         const todo = { content: todo_content, date: todo_due, assignedId: assignee.id, assignedName: assignee.name };
-        fetch(`http://localhost:3000/api/assignments/6263d2fb17033b23e05c0401/${selected_assignment.id}/team/1`, {
+        await fetch(`http://localhost:3000/api/assignments/6263d2fb17033b23e05c0401/${selected_assignment.id}/team/1`, {
             credentials: 'include',
             method: 'POST',
             headers: {

@@ -9,7 +9,7 @@ export default function CharterItem({ item }) {
 
     const postEmoji = async (emoji) => {
         const reaction = { emoji: emoji, postid: item._id };
-        fetch("http://localhost:3000/api/board/6263d2fb17033b23e05c0401/1/react", {
+        await fetch("http://localhost:3000/api/board/6263d2fb17033b23e05c0401/1/react", {
             credentials: 'include',
             method: 'POST',
             headers: {

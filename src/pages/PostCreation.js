@@ -13,10 +13,10 @@ export default function PostCreation() {
     const [content, setContent] = React.useState("");
     const [date, setDate] = React.useState(new Date());
 
-    const savePost = () => {
+    const savePost = async () => {
         setDate(new Date());
         const post = { title, content, date };
-        fetch(`http://localhost:3000/api/board/${orgid}/${teamid}`, {
+        await fetch(`http://localhost:3000/api/board/${orgid}/${teamid}`, {
             credentials: 'include',
             method: 'POST',
             headers: {
