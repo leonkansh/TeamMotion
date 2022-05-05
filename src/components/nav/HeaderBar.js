@@ -19,7 +19,6 @@ export default function HeaderBar({ screenname }) {
                 <House size={35} color="#383E56"/>
             </Link>
             <div className='header-title'>
-                {/* TODO: click to change team name */}
                 <p>{screenname}</p>
             </div>
         </div>

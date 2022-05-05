@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
-import HeaderBar from '../components/nav/HeaderBar';
+import HeaderBarTeambase from "../components/nav/HeaderBarTeambase";
 import BottomNavBar from '../components/nav/BottomNavbar';
 import { Divider } from '@mui/material';
 import { Plus, PencilSimple, User } from "phosphor-react";
@@ -44,7 +44,7 @@ export default function Teambase() {
 
     return (
         <div className='container'>
-            <HeaderBar screenname="TeamBase" />
+            <HeaderBarTeambase />
             {!isLoaded && <p>Loading...</p>}
             {isLoaded && (
                 <div>
