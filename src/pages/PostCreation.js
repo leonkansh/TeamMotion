@@ -51,7 +51,7 @@ export default function PostCreation() {
                     rows="10" cols="50"
                     onChange={event => setContent(event.target.value)}
                 />
-                <button className="btn-save" onClick={savePost}>
+                <button className="btn-post" onClick={savePost}>
                     Post
                 </button>
             </div>

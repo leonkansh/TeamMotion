@@ -82,7 +82,15 @@ textarea {
     height: 50vh;
 }
 
-.btn-save {
+.btn-post {
+    border: 1px solid #4B369D;
+    border-radius: 15px;
+    font-size: 1em;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    line-height: 27px;
+
     width: 37vw;
     height: 50px;
     color: #FFFFFF;
