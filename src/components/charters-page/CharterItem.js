@@ -1,8 +1,8 @@
 import React from 'react';
-import Box from '@mui/material/Box';
 import Picker from 'emoji-picker-react';
 import Popper from '@mui/material/Popper';
-import './CharterItem.css'
+import {ReactComponent as AddEmoji} from '../../assets/add_reaction.svg';
+import './CharterItem.css';
 
 export default function CharterItem({ item }) {
     const [chosenEmoji, setChosenEmoji] = React.useState(item.reactions);
@@ -39,46 +39,36 @@ export default function CharterItem({ item }) {
 
     return (
         <div>
-            <Box
-                sx={{
-                    bgcolor: 'white',
-                    borderRadius: 8,
-                    minWidth: 'auto',
-                    minHeight: 196,
-                    pt: 0.5,
-                    pl: 4,
-                    pr: 4,
-                    pb: 0.5,
-                    mb: 2
-                }}
-            >
-                <h2>{item.title || item.name}</h2>
-                <p>{item.content}</p>
-                <button aria-describedby={id} type="button" onClick={handleClick}>
-                    React
-                </button>
+            <div className='post-card'>
+                <h2 className='post-title'>{item.title || item.name}</h2>
+                <p className='post-content'>{item.content}</p>
+                <div className='reaction-container'>
+                    {chosenEmoji.length > 0 && (
+                        <span className='row-emoji'>
+                            {chosenEmoji.map((post, index) => {
+                                if (post) {
+                                    return (
+                                        <button
+                                            className='btn-emoji'
+                                            key={`emoji ${index}`}
+                                            value={post.emoji}
+                                            onClick={async (e) => postEmoji(e.target.value)}
+                                        >
+                                            {post.emoji} {post.users.length}
+                                        </button>
+                                    )
+                                }
+                            })}
+                        </span>
+                    )}
+                    <button className='btn-add-emoji' aria-describedby={id} type="button" onClick={handleClick}>
+                        <AddEmoji />
+                    </button>
+                </div>
                 <Popper id={id} open={open} anchorEl={anchorEl}>
                     <Picker onEmojiClick={onEmojiClick} />
                 </Popper>
-                {chosenEmoji.length > 0 && (
-                    <span>
-                        {chosenEmoji.map((post, index) => {
-                            if (post) {
-                                return (
-                                    <button
-                                        className='btn-emoji'
-                                        key={`emoji ${index}`}
-                                        value={post.emoji}
-                                        onClick={async (e) => postEmoji(e.target.value)}
-                                    >
-                                        {post.emoji} {post.users.length}
-                                    </button>
-                                )
-                            }
-                        })}
-                    </span>
-                )}
-            </Box>
+            </div>
         </div>
     );
 }

@@ -16,7 +16,8 @@ export default function AddButton(props) {
                 position: 'fixed',
                 bottom: 75,
                 right: 25,
-                fontSize: 60
+                fontSize: 60,
+                bgcolor: '#4B369D'
             }}
             component={RouterLink}
             to={props.path}
