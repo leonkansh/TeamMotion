@@ -66,12 +66,15 @@
 }
 
 .input-title {
-    font-size: 24px;
+    font-size: 28px;
+    padding: 5vw;
+    padding-bottom: 1vh;
 }
 
 .input-content {
-    font-size: 14px;
+    font-size: 18px;
     font-style: italic;
+    padding: 5vw;
 }
 
 textarea {
