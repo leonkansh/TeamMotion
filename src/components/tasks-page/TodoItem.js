@@ -75,6 +75,7 @@ export default function TodoItem({ todo, handleStatus, handleDelete }) {
                         <Checkbox
                             tabIndex={-1}
                             disableRipple
+                            defaultChecked={todo.completed}
                             onChange={e => { handleStatus(todo) }}
                         />
                         {/* TODO: update assignment context */}
