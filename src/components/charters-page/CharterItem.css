@@ -20,6 +20,8 @@
     min-height: 100vh;
     border-radius: 15px;
     padding-top: 27px;
+    padding-bottom: 12px;
+    display: block;
 }
 
 .post-card {
@@ -43,6 +45,48 @@
 .post-content {
     margin-top: 5px;
     margin-left: 5px;
+}
+
+.create-post-container {
+    background-color: #ffffff;
+    border-radius: 15px;
+    padding: 15px;
+}
+
+.input-title, .input-content {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    line-height: 36px;
+    color: #383E56B2;
+    width: 90vw;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    border-style: none;
+}
+
+.input-title {
+    font-size: 24px;
+}
+
+.input-content {
+    font-size: 14px;
+    font-style: italic;
+}
+
+textarea {
+    width: 80vw;
+    height: 50vh;
+}
+
+.btn-save {
+    width: 37vw;
+    height: 50px;
+    color: #FFFFFF;
+    background-color: #4B369D;
+    margin-top: 5.15vh;
+    margin-left: 57.5vw;
+    margin-right: 5.5vw;
 }
 
 .reaction-container {
