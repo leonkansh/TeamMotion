@@ -1,0 +1,21 @@
+.leader-bar {
+    text-align: center;
+    background-color: #FFCA03;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 18px;
+
+    color: #4B369D;
+
+    padding: 5px;
+    border-radius: 15px;
+    min-width: 70vw;
+    margin-top: 2.5vh;
+    margin-bottom: 2vh;
+    margin-left: 15vw;
+    margin-right: 15vw;
+
+    opacity: 0.8;
+}
