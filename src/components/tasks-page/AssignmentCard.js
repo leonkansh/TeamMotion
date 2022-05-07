@@ -1,26 +1,6 @@
-import { React, useState } from "react";
-import { ButtonBase } from "@mui/material";
-
-const unselectedStyle = {
-    bgcolor: '#E3E5FC',
-    border: 'none',
-    boxShadow: 1,
-    borderRadius: 5,
-    p: 2,
-    minWidth: 200,
-    minheight: 150
-};
-
-const selectedStyle = {
-    bgcolor: '#4B369D',
-    color: '#ffffff',
-    border: 'none',
-    boxShadow: 1,
-    borderRadius: 5,
-    p: 2,
-    minWidth: 200,
-    minheight: 150
-};
+import { React } from "react";
+import { CrownSimple } from 'phosphor-react';
+import './AssignmentCard.css';
 
 const convertUTC = (input_date) => {
     var options = { weekday: 'long', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric' };
@@ -32,32 +12,28 @@ const convertUTC = (input_date) => {
  * takes an Assignment object to parse assignment name, due date, lead name
  * @returns display a card that holds the parsed information
  */
-export default function AssignmentCard({ assignment, setAssignmentId, setTodoList, data, index }) {
-    const [style, setStyle] = useState((index == 0) ? selectedStyle : unselectedStyle);
+export default function AssignmentCard({ assignment, assignment_id, setAssignmentId, setTodoList, data }) {
+    const chooseStyle = () => {
+        if (assignment._id === assignment_id) return 'selected-card';
+        else return 'unselected-card';
+    };
+
+    const handleClick = (e) => {
+        setAssignmentId(assignment._id);
+        setTodoList(data.find((item) => item._id === assignment._id).todos);
+    }
+
     return (
-        <ButtonBase
-            key={assignment._id}
-            focusRipple
-            sx={style}
-            autoFocus={(index == 0) && true}
-            onClick={(e) => {
-                setStyle(selectedStyle);
-                setAssignmentId(assignment._id);
-                setTodoList(data.find(item => item._id === assignment._id).todos)
-            }}
-            onBlur={(e) => {
-                setStyle(unselectedStyle)
-                setAssignmentId(assignment._id);
-                setTodoList(data.find(item => item._id === assignment._id).todos)
-            }}
+        <div
+            className={`assignment-card ${chooseStyle()}`}
+            onClick={handleClick}
         >
-            <div className='assignment-card'>
-                <h4 className="assignment-card-name">{assignment.name}</h4>
+            <h4 className="assignment-card-name">{assignment.name}</h4>
 
-                <p className="assignment-card-due">Due {convertUTC(assignment.due)}</p>
+            <p className="assignment-card-due">Due {convertUTC(assignment.due)}</p>
 
-                <p className="assignment-card-leader">Leader: {assignment.leader.name}</p>
-            </div>
-        </ButtonBase>
+            <p className="assignment-card-leader"><CrownSimple size={32} />{assignment.leader.name}
+            </p>
+        </div>
     );
 }
