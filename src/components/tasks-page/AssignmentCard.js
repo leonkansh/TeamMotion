@@ -24,16 +24,15 @@ export default function AssignmentCard({ assignment, assignment_id, setAssignmen
     }
 
     return (
-        <div
-            className={`assignment-card ${chooseStyle()}`}
-            onClick={handleClick}
-        >
+        <div className={`assignment-card ${chooseStyle()}`} onClick={handleClick}>
             <h4 className="assignment-card-name">{assignment.name}</h4>
 
             <p className="assignment-card-due">Due {convertUTC(assignment.due)}</p>
 
-            <p className="assignment-card-leader"><CrownSimple size={32} />{assignment.leader.name}
-            </p>
+            <span className='assignment-card-leader'>
+                <CrownSimple size={32} />
+                <p>{assignment.leader.name}</p>
+            </span>
         </div>
     );
 }
