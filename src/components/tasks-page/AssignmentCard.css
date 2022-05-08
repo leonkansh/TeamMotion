@@ -1,0 +1,37 @@
+.assignment-card {
+    min-width: 50vw;
+    font-family: 'Poppins';
+    font-style: normal;
+    margin: 5px;
+    padding: 12px;
+    border-radius: 15px;
+}
+
+.assignment-card-name {
+    font-weight: 700;
+    font-size: 3.5vw;
+    line-height: 21px;
+    letter-spacing: -0.02em;
+}
+
+.assignment-card-due {
+    font-weight: 500;
+    font-size: 2.7vw;
+    line-height: 15px;
+}
+.assignment-card-leader {
+    display: inline-flex;
+    font-weight: 700;
+    font-size: 2.9vw;
+    line-height: 18px;
+}
+
+.selected-card {
+    background: #4B369D;
+    color: #FFFFFF;
+}
+
+.unselected-card {
+    background: #E3E5FC;
+    color: #474760;
+}

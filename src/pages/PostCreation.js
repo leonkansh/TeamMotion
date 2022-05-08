@@ -1,28 +1,22 @@
 import React from 'react';
 import { useHistory, useParams } from 'react-router-dom';
-import IconButton from '@mui/material/IconButton';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import Stack from '@mui/material/Stack';
+import HeaderBarBackArrow from '../components/nav/HeaderBarBackArrow';
+import BottomNavBar from '../components/nav/BottomNavbar';
+import '../components/charters-page/CharterItem.css';
 
 export default function PostCreation() {
     const history = useHistory()
-
-    const goBack = () => {
-        history.goBack()
-    }
-
-
     const { orgid, teamid } = useParams();
+    const reflectionPath = `/orgs/${orgid}/teams/${teamid}/reflections`;
+
     const [title, setTitle] = React.useState("");
     const [content, setContent] = React.useState("");
     const [date, setDate] = React.useState(new Date());
 
-    const postData = () => {
+    const savePost = async () => {
         setDate(new Date());
         const post = { title, content, date };
-        fetch(`http://localhost:3000/api/board/${orgid}/${teamid}`, {
+        await fetch(`http://localhost:3000/api/board/${orgid}/${teamid}`, {
             credentials: 'include',
             method: 'POST',
             headers: {
@@ -30,41 +24,38 @@ export default function PostCreation() {
             },
             body: JSON.stringify(post)
         })
+        history.push(reflectionPath);
     }
+
+    const content_placeholder = "What are your thoughts?\n- How is your group working together as a team?\n- What was one positive thing that happened in the project this week?\n- What worked well and what didn’t work well?\n- How well is the team adhering to the team charter?";
 
     return (
         <div>
-            <IconButton
-                size="large"
-                edge="start"
-                color="inherit"
-                aria-label="home"
-                sx={{ mr: 2, color: "primary.main", left: 22, top: 23 }}
-                onClick={goBack}
-            >
-                <ArrowBackIcon sx={{ fontSize: 35 }} />
-            </IconButton>
-            <h1>make a post here</h1>
-            <Stack>
-                <TextField
-                    placeholder="title"
-                    value={title}
-                    sx={{ fontSize: 24, maxWidth: 300, p: 1, pb: 3 }}
+            <HeaderBarBackArrow screenname='Reflection Board'/>
+            <div className='reflection-container'>
+                <input 
+                    className="input-title" 
+                    type="text" 
+                    placeholder='Title'
+                    value={title} 
+                    size="50"
                     onChange={event => setTitle(event.target.value)}
                 />
 
-                <TextField
-                    id="outlined-multiline-static"
-                    label="Enter your reflection"
-                    multiline
-                    rows={4}
-                    sx={{ p: 1 }}
+                <textarea 
+                    className="input-content" 
+                    type="text" 
+                    placeholder={content_placeholder}
                     value={content}
+                    size="50"
+                    rows="10" cols="50"
                     onChange={event => setContent(event.target.value)}
                 />
-
-                <Button href={`/orgs/${orgid}/teams/${teamid}/reflections`} variant="contained" onClick={e => postData()}>Post</Button>
-            </Stack>
+                <button className="btn-post" onClick={savePost}>
+                    Post
+                </button>
+            </div>
+            <BottomNavBar />
         </div>
     )
 }

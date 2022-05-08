@@ -42,7 +42,7 @@ export default function Goal() {
     const saveGoal = async (e) => {
         e.preventDefault();
         const body = { name: "Goals", goals: goals }
-        fetch(`http://localhost:3000/api/charters/${orgid}/${teamid}`, {
+        await fetch(`http://localhost:3000/api/charters/${orgid}/${teamid}`, {
             credentials: 'include',
             method: 'PUT',
             headers: {

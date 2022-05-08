@@ -3,6 +3,7 @@ import HeaderBar from '../components/nav/HeaderBar';
 import BottomNavBar from '../components/nav/BottomNavbar';
 import TodoList from '../components/tasks-page/TodoList';
 import AssignmentList from '../components/tasks-page/AssignmentList';
+import LeaderIndicator from "../components/tasks-page/LeaderIndicator";
 import AddButton from '../components/common/AddButton';
 import { AssignmentContext } from './AssignmentContext';
 import { useParams } from 'react-router-dom';
@@ -39,23 +40,32 @@ export default function Tasks() {
     const todoPath = `${urlPrepend}/tasks/create-todo`;
 
     return (
-        <div>
-            {!isLoaded && <p>Loading...</p>}
-            {isLoaded && (
-                <div>
-                    <HeaderBar screenname="Task" />
+      <div>
+        {!isLoaded && <p>Loading...</p>}
+        {isLoaded && (
+          <div>
+            <HeaderBar screenname="Task" barHeight={8} />
 
-                    <AssignmentContext.Provider
-                        value={{ data, assignment_id, setAssignmentId, todo_list, setTodoList }}
-                    >
-                        <AssignmentList />
-                        <TodoList />
-                    </AssignmentContext.Provider>
+            <AssignmentContext.Provider
+              value={{
+                data,
+                assignment_id,
+                setAssignmentId,
+                todo_list,
+                setTodoList,
+              }}
+            >
+              <p className="assignment-divider">Assignments</p>
+              <AssignmentList />
+              <LeaderIndicator />
+              <p className="task-divider">Tasks</p>
+              <TodoList />
+            </AssignmentContext.Provider>
 
-                    <AddButton path={todoPath} />
-                    <BottomNavBar />
-                </div>
-            )}
-        </div>
-    )
+            <AddButton path={todoPath} />
+            <BottomNavBar />
+          </div>
+        )}
+      </div>
+    );
 }

@@ -9,3 +9,99 @@
     border-radius: 5px;
     color: #4B369D;
 }
+
+.btn-add-emoji {
+    border-style: none;
+    background-color: #ffffff;
+}
+
+.reflection-container {
+    background-color: #CDC9F9;
+    min-height: 100vh;
+    border-radius: 15px;
+    padding-top: 27px;
+    padding-bottom: 12px;
+    display: block;
+}
+
+.post-card {
+    background-color: #ffffff;
+    border-radius: 15px;
+    padding: 15px;
+    margin: 15px;
+}
+
+.post-title {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 27px;
+    color: #383E56;
+    margin-top: 3px;
+    margin-left: 5px;
+}
+
+.post-content {
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+.create-post-container {
+    background-color: #ffffff;
+    border-radius: 15px;
+    padding: 15px;
+}
+
+.input-title, .input-content {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    line-height: 36px;
+    color: #383E56B2;
+    width: 90vw;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    border-style: none;
+}
+
+.input-title {
+    font-size: 28px;
+    padding: 5vw;
+    padding-bottom: 1vh;
+}
+
+.input-content {
+    font-size: 18px;
+    font-style: italic;
+    padding: 5vw;
+}
+
+textarea {
+    width: 80vw;
+    height: 50vh;
+}
+
+.btn-post {
+    border: 1px solid #4B369D;
+    border-radius: 15px;
+    font-size: 1em;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    line-height: 27px;
+
+    width: 37vw;
+    height: 50px;
+    color: #FFFFFF;
+    background-color: #4B369D;
+    margin-top: 3vh;
+    margin-left: 57.5vw;
+    margin-right: 5.5vw;
+    margin-bottom: 2.15vh;
+}
+
+.reaction-container {
+    display: flex;
+    flex-wrap: wrap;
+}
