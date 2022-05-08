@@ -16,6 +16,7 @@ export default function TodoCreation() {
     }
 
     const { orgid, teamid } = useParams();
+    const taskPath = `/orgs/${orgid}/teams/${teamid}/tasks`;
 
     const [todo_content, setTodoName] = React.useState('');
     const [selected_assignment, setSelectedAssignment] = React.useState({ id: "", name: "" });
@@ -89,7 +90,8 @@ export default function TodoCreation() {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(todo)
-        })
+        });
+        history.push(taskPath);
     }
 
     React.useEffect(() => {
