@@ -50,7 +50,7 @@ export default function TodoCreation() {
 
     // get assignment list from api : names & due dates
     const loadAssignments = async () => {
-        await fetch("http://localhost:3000/api/assignments/6263d2fb17033b23e05c0401/team/1", {
+        await fetch(`http://localhost:3000/api/assignments/${orgid}/team/${teamid}`, {
                 credentials: 'include'
             })
             .then(res => res.json())
@@ -66,7 +66,7 @@ export default function TodoCreation() {
 
     // get team member list from api : names
     const loadMembers = async () => {
-        await fetch("http://localhost:3000/api/org/6263d2fb17033b23e05c0401/team/1", {
+        await fetch(`http://localhost:3000/api/org/${orgid}/team/${teamid}`, {
                 credentials: 'include'
             })
             .then(res => res.json())
@@ -83,7 +83,7 @@ export default function TodoCreation() {
     // post a new todo to api
     const postTodo = async () => {
         const todo = { content: todo_content, date: todo_due, assignedId: assignee.id, assignedName: assignee.name };
-        await fetch(`http://localhost:3000/api/assignments/6263d2fb17033b23e05c0401/${selected_assignment.id}/team/1`, {
+        await fetch(`http://localhost:3000/api/assignments/${orgid}/${selected_assignment.id}/team/${teamid}`, {
             credentials: 'include',
             method: 'POST',
             headers: {
