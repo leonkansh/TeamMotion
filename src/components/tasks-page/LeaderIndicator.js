@@ -10,7 +10,7 @@ export default function LeaderIndicator() {
     const [isLoaded, setIsLoaded] = React.useState(false);
 
     const getSelf = async () => {
-      await fetch("http://localhost:3000/api/users/self", {
+      await fetch("https://tadashi-srv.herokuapp.com/api/users/self", {
         credentials: "include",
       })
         .then((res) => res.json())

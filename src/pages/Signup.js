@@ -18,7 +18,7 @@ export default function Signup() {
         } else if (password != confirm) {
             console.log('passwords must match');
         } else {
-            fetch('http://localhost:3000/login/signup', {
+            fetch('https://tadashi-srv.herokuapp.com/login/signup', {
                 credentials: 'include',
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },

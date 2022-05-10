@@ -21,7 +21,7 @@ export default function Teambase() {
     const [goals, setGoals] = React.useState([]);
 
     const loadCharters = async () => {
-        await fetch(`http://localhost:3000/api/charters/${orgid}/${teamid}`, {
+        await fetch(`https://tadashi-srv.herokuapp.com/api/charters/${orgid}/${teamid}`, {
                 credentials: 'include'
             })
             .then(res => res.json())

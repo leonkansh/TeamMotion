@@ -14,7 +14,7 @@ export default function Goal() {
     const [num, setNum] = React.useState(goals.length);
     console.log("goal.js", goals);
     const loadGoals = async () => {
-        await fetch(`http://localhost:3000/api/charters/${orgid}/${teamid}/single?name=Goals`, {
+        await fetch(`https://tadashi-srv.herokuapp.com/api/charters/${orgid}/${teamid}/single?name=Goals`, {
                 credentials: 'include'
             })
             .then(res => res.json())
@@ -42,7 +42,7 @@ export default function Goal() {
     const saveGoal = async (e) => {
         e.preventDefault();
         const body = { name: "Goals", goals: goals }
-        await fetch(`http://localhost:3000/api/charters/${orgid}/${teamid}`, {
+        await fetch(`https://tadashi-srv.herokuapp.com/api/charters/${orgid}/${teamid}`, {
             credentials: 'include',
             method: 'PUT',
             headers: {
