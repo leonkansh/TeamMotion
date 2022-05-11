@@ -14,7 +14,7 @@ export default function Meeting() {
     const [num, setNum] = React.useState(meetings.length);
 
     const loadMeetings = async () => {
-        await fetch(`http://localhost:3000/api/charters/${orgid}/${teamid}/single?name=Meeting Times`,{
+        await fetch(`https://tadashi-srv.herokuapp.com/api/charters/${orgid}/${teamid}/single?name=Meeting Times`,{
                 credentials: 'include'
             })
             .then(res => res.json())
@@ -47,7 +47,7 @@ export default function Meeting() {
     const saveMeeting = async (e) => {
         e.preventDefault();
         const body = { name: "Meeting Times", meetingTimes: meetings }
-        await fetch(`http://localhost:3000/api/charters/${orgid}/${teamid}`, {
+        await fetch(`https://tadashi-srv.herokuapp.com/api/charters/${orgid}/${teamid}`, {
             credentials: 'include',
             method: 'PUT',
             headers: {

@@ -21,7 +21,7 @@ export default function Home() {
     const query = useQuery();
     
     function getSelf() {
-        fetch('http://localhost:3000/api/users/self', {
+        fetch('https://tadashi-srv.herokuapp.com/api/users/self', {
             credentials: 'include'
         })
             .then((res) => res.json())
@@ -38,7 +38,7 @@ export default function Home() {
     }
 
     function signout() {
-        fetch('http://localhost:3000/login/signout', {
+        fetch('https://tadashi-srv.herokuapp.com/login/signout', {
             credentials: 'include',
             method: 'POST',
             headers: { 'Content-Type': 'application/json' }
@@ -56,7 +56,7 @@ export default function Home() {
 
     function joinOrg() {
         if(joinOrgId != '' && joinCode != '') {
-            fetch(`http://localhost:3000/api/org/${joinOrgId}/join`, {
+            fetch(`https://tadashi-srv.herokuapp.com/api/org/${joinOrgId}/join`, {
                 credentials: 'include',
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },

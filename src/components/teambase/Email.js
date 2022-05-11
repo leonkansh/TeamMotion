@@ -14,7 +14,7 @@ export default function Email() {
     const [num, setNum] = React.useState(profiles.length);
 
     const loadProfiles = async () => {
-        await fetch(`http://localhost:3000/api/charters/${orgid}/${teamid}/single?name=Profile`, {
+        await fetch(`https://tadashi-srv.herokuapp.com/api/charters/${orgid}/${teamid}/single?name=Profile`, {
                 credentials: 'include'
             })
             .then(res => res.json())
@@ -45,7 +45,7 @@ export default function Email() {
     const saveEmail = async (e) => {
         e.preventDefault();
         const body = { name: "Profile", profile: profiles }
-        await fetch(`http://localhost:3000/api/charters/${orgid}/${teamid}`, {
+        await fetch(`https://tadashi-srv.herokuapp.com/api/charters/${orgid}/${teamid}`, {
             credentials: 'include',
             method: 'PUT',
             headers: {

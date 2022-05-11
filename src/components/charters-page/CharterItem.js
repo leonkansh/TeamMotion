@@ -1,15 +1,17 @@
 import React from 'react';
 import Picker from 'emoji-picker-react';
 import Popper from '@mui/material/Popper';
+import { useParams } from "react-router-dom";
 import {ReactComponent as AddEmoji} from '../../assets/add_reaction.svg';
 import './CharterItem.css';
 
 export default function CharterItem({ item }) {
+    const { orgid, teamid } = useParams();
     const [chosenEmoji, setChosenEmoji] = React.useState(item.reactions);
 
     const postEmoji = async (emoji) => {
         const reaction = { emoji: emoji, postid: item._id };
-        await fetch("http://localhost:3000/api/board/6263d2fb17033b23e05c0401/1/react", {
+        await fetch(`https://tadashi-srv.herokuapp.com/api/board/${orgid}/${teamid}/react`, {
             credentials: 'include',
             method: 'POST',
             headers: {

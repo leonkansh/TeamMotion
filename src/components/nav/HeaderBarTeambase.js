@@ -18,7 +18,7 @@ export default function HeaderBarTeambase() {
 
   const [isLoaded, setIsLoaded] = React.useState(false);
   const loadName = async (e) => {
-    await fetch(`http://localhost:3000/api/org/${orgid}/team/${teamid}`, {
+    await fetch(`https://tadashi-srv.herokuapp.com/api/org/${orgid}/team/${teamid}`, {
       credentials: "include",
     })
       .then((res) => res.json())
@@ -34,7 +34,7 @@ export default function HeaderBarTeambase() {
 
   const saveName = async () => {
     const body = { teamName: name };
-    await fetch(`http://localhost:3000/api/org/${orgid}/team/${teamid}`, {
+    await fetch(`https://tadashi-srv.herokuapp.com/api/org/${orgid}/team/${teamid}`, {
       credentials: "include",
       method: "PUT",
       headers: {

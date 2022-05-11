@@ -8,7 +8,7 @@ export default function Landing() {
     const [password, setPassword] = useState('');
 
     function getStatus() {
-        fetch('http://localhost:3000/api/users/self', {
+        fetch('https://tadashi-srv.herokuapp.com/api/users/self', {
             credentials: 'include'
         })
             .then(res => res.json())
@@ -20,7 +20,7 @@ export default function Landing() {
     }
 
     function attemptLogin() {
-        fetch('http://localhost:3000/login/signin', {
+        fetch('https://tadashi-srv.herokuapp.com/login/signin', {
             credentials: 'include',
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },

@@ -4,6 +4,7 @@ import TodoItem from "./TodoItem";
 import { Grid } from '@mui/material';
 
 export default function TodoList() {
+    // TODO: useParam : orgid, teamid
     const value = React.useContext(AssignmentContext);
 
     const handleStatus = (todo) => {
@@ -21,7 +22,7 @@ export default function TodoList() {
     // FIXME: Use url params for org/team, not touching just in case
     const changeComplete = async (todoId, completed, assignmentId) => {
         const todo = { todoId: todoId, completed: completed };
-        await fetch(`http://localhost:3000/api/assignments/6263d2fb17033b23e05c0401/${assignmentId}/team/1`, {
+        await fetch(`https://tadashi-srv.herokuapp.com/api/assignments/6263d2fb17033b23e05c0401/${assignmentId}/team/1`, {
             credentials: 'include',
             method: 'PUT',
             headers: {
@@ -40,7 +41,7 @@ export default function TodoList() {
 
     const deleteTodo = async (todoId, assignmentId) => {
         const todo = { todoId: todoId };
-        await fetch(`http://localhost:3000/api/assignments/6263d2fb17033b23e05c0401/${assignmentId}/team/1`, {
+        await fetch(`https://tadashi-srv.herokuapp.com/api/assignments/6263d2fb17033b23e05c0401/${assignmentId}/team/1`, {
             credentials: 'include',
             method: 'DELETE',
             headers: {
