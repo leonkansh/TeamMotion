@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useHistory } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom';
+import { ReactComponent as TadashiIcon } from '../assets/tadashi-icon.svg';
 import '@fontsource/poppins';
 
 export default function Landing() {
@@ -49,13 +50,22 @@ export default function Landing() {
                 fontFamily: 'Poppins, sans-serif',
                 fontStyle: 'normal',
                 fontWeight: 400,
-                fontSize: '48px',
+                fontSize: '24px',
                 marginTop: '50px',
-                marginLeft: '35px',
+                marginBottom: '19px',
+                lineHeight: '36px',
+                textAlign: 'center'
+            }}>Welcome back to</h1>
+            <TadashiIcon style={{ marginLeft: '30vw' }} />
+            <h1 style={{
+                color: '#4B369D',
+                fontFamily: 'Poppins, sans-serif',
+                fontStyle: 'normal',
+                fontWeight: 400,
+                fontSize: '48px',
                 lineHeight: '72px',
-                width: '265px'
-            }}>Welcome back!</h1>
-            <div style={{backgroundColor: '#CCCCCC', width: '100%', height: '225px' }}></div>
+                textAlign: 'center'
+            }}>Tadashi</h1>
             <p style={{
                 color: '#4B369D',
                 fontFamily: 'Poppins, sans-serif',
@@ -64,7 +74,7 @@ export default function Landing() {
                 fontSize: '14px',
                 lineHeight: '18px',
                 marginLeft: '45px',
-                marginTop: '60px'
+                marginTop: '30px'
             }}>Email</p>
             <input type='text' onChange={t => setEmail(t.target.value)} required
                 style={{

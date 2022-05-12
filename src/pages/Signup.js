@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { IconButton } from "@mui/material";
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useHistory } from 'react-router-dom';
+import { ArrowLeft } from 'phosphor-react';
+import { ReactComponent as SignupSVG } from '../assets/signup-img.svg';
 import '@fontsource/poppins';
 
 export default function Signup() {
@@ -73,22 +73,32 @@ export default function Signup() {
         color: '#4B369D'
     }
 
+    const btnHomeStyle = {
+        position: "static",
+        marginTop: '50px',
+        marginLeft: '20px'
+    }
+
     return (
         <div>
-            <IconButton
-                size="large"
-                edge="start"
-                color="inherit"
-                aria-label="home"
-                sx={{ mr: 2, color: "#4B369D", left: 22, top: 23 }}
-                onClick={e => {
-                    e.preventDefault();
-                    history.goBack();
-                }}
-            >
-                <ArrowBackIcon sx={{ fontSize: 35 }} />
-            </IconButton>
-            <div style={{backgroundColor: '#EEEEEE', height: '250px', width: '100%'}}></div>
+            <button className="btn-back" onClick={(e) => {
+                e.preventDefault();
+                history.goBack();
+            }} style={btnHomeStyle}>
+                <ArrowLeft size={35} color="#4B369D" />
+            </button>
+            <h1 style={{
+                color: '#4B369D',
+                fontFamily: 'Poppins, sans-serif',
+                fontStyle: 'normal',
+                fontWeight: 400,
+                fontSize: '48px',
+                marginTop: '0px',
+                marginRight: '30px',
+                lineHeight: '72px',
+                textAlign: 'end'
+            }}>Sign Up</h1>
+            <SignupSVG style={{ marginLeft: '22vw' }} />
             <p style={styleText}>What's your name?</p>
             <div style={{
                 display: 'flex',
