@@ -54,6 +54,16 @@
     margin-left: 5px;
 }
 
+.post-date {
+    color: rgba(75, 54, 157, 0.7);
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 3.5vw;
+    line-height: 18px;
+    letter-spacing: -0.02em;
+}
+
 .create-post-container {
     background-color: #ffffff;
     border-radius: 15px;

@@ -5,6 +5,12 @@ import { useParams } from "react-router-dom";
 import {ReactComponent as AddEmoji} from '../../assets/add_reaction.svg';
 import './CharterItem.css';
 
+const convertUTC = (input_date) => {
+    var options = { month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric' };
+    var date = new Date(input_date);
+    return date.toLocaleDateString("en-US", options);
+}
+
 export default function CharterItem({ item }) {
     const { orgid, teamid } = useParams();
     const [chosenEmoji, setChosenEmoji] = React.useState(item.reactions);
@@ -70,6 +76,7 @@ export default function CharterItem({ item }) {
                 <Popper id={id} open={open} anchorEl={anchorEl}>
                     <Picker onEmojiClick={onEmojiClick} />
                 </Popper>
+                <p className='post-date'>Added {convertUTC(item.date)}</p>
             </div>
         </div>
     );
