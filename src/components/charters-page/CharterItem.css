@@ -10,9 +10,16 @@
     color: #4B369D;
 }
 
+.row-emoji {
+    display: flex;
+    gap: 4px;
+}
+
 .btn-add-emoji {
     border-style: none;
     background-color: #ffffff;
+    min-width: 28px;
+    min-height: 23px;
 }
 
 .reflection-container {
