@@ -87,7 +87,7 @@ export default function Teambase() {
                     </div>
                     <Divider/>
                     {goals.length < 1 ? (
-                        <Link to={meetingPath}>
+                        <Link to={goalPath}>
                             <div className="btn-add">
                                 <Plus size={24} color="#4B369D"/>
                             </div>
