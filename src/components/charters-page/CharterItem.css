@@ -10,9 +10,16 @@
     color: #4B369D;
 }
 
+.row-emoji {
+    display: flex;
+    gap: 4px;
+}
+
 .btn-add-emoji {
     border-style: none;
     background-color: #ffffff;
+    min-width: 28px;
+    min-height: 23px;
 }
 
 .reflection-container {
@@ -45,6 +52,16 @@
 .post-content {
     margin-top: 5px;
     margin-left: 5px;
+}
+
+.post-date {
+    color: rgba(75, 54, 157, 0.7);
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 3.5vw;
+    line-height: 18px;
+    letter-spacing: -0.02em;
 }
 
 .create-post-container {
