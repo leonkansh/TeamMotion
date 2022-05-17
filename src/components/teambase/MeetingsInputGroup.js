@@ -4,7 +4,7 @@ import MenuItem from '@mui/material/MenuItem';
 import './Meeting.css';
 
 import IconButton from '@mui/material/IconButton';
-import { CalendarBlank, Clock } from 'phosphor-react';
+import { CalendarBlank, Clock, X } from 'phosphor-react';
 
 import Stack from '@mui/material/Stack';
 
@@ -36,7 +36,7 @@ const revertDay = (day) => {
  * @param { setDay, this_meeting, index of meeting list }
  * @returns parsed meeting content in an input form card
  */
-export default function InputGroup({ meetings, setMeetings, meeting, index }) {
+export default function InputGroup({ meetings, setMeetings, deleteMeeting, meeting, index }) {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
     
@@ -83,15 +83,23 @@ export default function InputGroup({ meetings, setMeetings, meeting, index }) {
     return (
         <div className='input-group'>
             <Stack>
-                <input 
-                    className="input-name" 
-                    type="text" 
-                    name="name" 
-                    value={name} 
-                    size="50"
-                    placeholder='Meeting Name'
-                    onChange={handleName}
-                />
+                <div style={{
+                    direction: 'row'
+                }}>
+                    <input 
+                        className="input-name" 
+                        type="text" 
+                        name="name" 
+                        value={name} 
+                        size="50"
+                        placeholder='Meeting Name'
+                        onChange={handleName}
+                    />
+
+                    <button className='btn-delete' onClick={e => deleteMeeting(e, index)}>
+                        <X size={25} />
+                    </button>
+                </div>
                 
                 <p>When will it be?</p>
 
