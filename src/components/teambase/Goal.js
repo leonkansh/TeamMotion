@@ -12,7 +12,6 @@ export default function Goal() {
     const [goals, setGoals] = React.useState([]);
     const [isLoaded, setIsLoaded] = React.useState(false);
     const [num, setNum] = React.useState(goals.length);
-    console.log("goal.js", goals);
     const loadGoals = async () => {
         await fetch(`https://tadashi-srv.herokuapp.com/api/charters/${orgid}/${teamid}/single?name=Goals`, {
                 credentials: 'include'
@@ -41,7 +40,9 @@ export default function Goal() {
 
     const saveGoal = async (e) => {
         e.preventDefault();
-        const body = { name: "Goals", goals: goals }
+        const all_space = /^\s*$/;
+        const sanitized_goals = goals.filter(goal => goal && goal.length > 0 && !goal.match(all_space));
+        const body = { name: "Goals", goals: sanitized_goals }
         await fetch(`https://tadashi-srv.herokuapp.com/api/charters/${orgid}/${teamid}`, {
             credentials: 'include',
             method: 'PUT',
@@ -51,6 +52,14 @@ export default function Goal() {
             body: JSON.stringify(body)
         }).catch(e => console.log("error", e));
         history.push(teambasePath);
+    }
+
+    const deleteGoal = (e, index) => {
+        e.preventDefault();
+        let data = goals;
+        data.splice(index);
+        setGoals(data);
+        setNum(num - 1);
     }
 
     return (
@@ -65,6 +74,7 @@ export default function Goal() {
                                 <GoalsInputGroup
                                     goals={goals}
                                     setGoals={setGoals}
+                                    deleteGoal={deleteGoal}
                                     goal={goal}
                                     index={index}
                                 />
