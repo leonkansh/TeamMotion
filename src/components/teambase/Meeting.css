@@ -19,6 +19,10 @@
     margin: 12.5px;
 }
 
+.email-input-group {
+    display: grid;
+}
+
 .input-time {
     border: .1px solid #C4C4C4;
     border-top: none;
@@ -96,6 +100,12 @@ p, h1, h2, h3 {
     height: 50px;
     color: #FFFFFF;
     background-color: #4B369D;
+}
+
+.btn-delete {
+    border-style: none;
+    background-color: transparent;
+    vertical-align: bottom;
 }
 
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */

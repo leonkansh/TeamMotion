@@ -81,7 +81,7 @@ export default function Teambase() {
                     
                     <div className='section-break'>
                         <h3>Team Goals</h3>
-                        {meetings.length > 0 && (
+                        {goals.length > 0 && (
                             <Link className="btn-edit" to={goalPath}><PencilSimple size={30} color='#4B369D' /></Link>
                         )}
                     </div>
@@ -100,7 +100,7 @@ export default function Teambase() {
 
                     <div className='section-break'>
                         <h3>Emails</h3>
-                        {meetings.length > 0 && (
+                        {profiles.length > 0 && (
                             <Link className="btn-edit" to={emailPath}><PencilSimple size={30} color='#4B369D' /></Link>
                         )}
                     </div>

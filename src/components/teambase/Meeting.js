@@ -44,9 +44,27 @@ export default function Meeting() {
         setNum(num + 1);
     }
 
+    const deleteMeeting = (e, index) => {
+        e.preventDefault();
+        let data = meetings;
+        data.splice(index);
+        setMeetings(data);
+        setNum(num - 1);
+    }
+
+    const isValidMeeting = (meeting) => {
+        const all_space = /^\s*$/;
+        if (!meeting.name || meeting.name.match(all_space)) return false;
+        if (!meeting.weekday) return false;
+        if (!meeting.start) return false;
+        if (!meeting.end) return false;
+        return true;
+    }
+
     const saveMeeting = async (e) => {
         e.preventDefault();
-        const body = { name: "Meeting Times", meetingTimes: meetings }
+        const sanitized_meetings = meetings.filter(isValidMeeting);
+        const body = { name: "Meeting Times", meetingTimes: sanitized_meetings }
         await fetch(`https://tadashi-srv.herokuapp.com/api/charters/${orgid}/${teamid}`, {
             credentials: 'include',
             method: 'PUT',
@@ -70,6 +88,7 @@ export default function Meeting() {
                                 <MeetingsInputGroup
                                     meetings={meetings}
                                     setMeetings={setMeetings}
+                                    deleteMeeting={deleteMeeting}
                                     meeting={meeting}
                                     index={index}
                                 />
