@@ -1,13 +1,22 @@
-.todo-item {
+.incompleted-todo {
     background-color: #4B369D;
+    color: #ffffff;
+}
+
+.completed-todo {
+    background: #EEEFFF;
+    color: #8F98FF;
+}
+
+.todo-item {
     border-radius: 15px;
     font-family: 'Poppins';
     font-style: normal;
-    color: #ffffff;
     margin-bottom: 1vh;
     margin-left: 5vw;
     margin-right: 5vw;
 }
+
 .checkbox, .todo-content-container, .assignee-container, .btn-delete-todo {
     display: inline-block;
 }
