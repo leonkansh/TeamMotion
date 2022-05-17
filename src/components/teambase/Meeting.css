@@ -19,6 +19,10 @@
     margin: 12.5px;
 }
 
+.email-input-group {
+    display: grid;
+}
+
 .input-time {
     border: .1px solid #C4C4C4;
     border-top: none;

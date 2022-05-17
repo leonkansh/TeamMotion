@@ -42,9 +42,25 @@ export default function Email() {
         setNum(num + 1);
     }
 
+    const deleteContact = (e, index) => {
+        e.preventDefault();
+        let data = profiles;
+        data.splice(index);
+        setProfiles(data);
+        setNum(num - 1);
+    }
+
+    const isValidProfile = (profile) => {
+        const all_space = /^\s*$/;
+        if (!profile.name || profile.name.match(all_space)) return false;
+        if (!profile.email || profile.email.match(all_space)) return false;
+        return true;
+    }
+
     const saveEmail = async (e) => {
         e.preventDefault();
-        const body = { name: "Profile", profile: profiles }
+        const sanitized_profiles = profiles.filter(isValidProfile);
+        const body = { name: "Profile", profile: sanitized_profiles }
         await fetch(`https://tadashi-srv.herokuapp.com/api/charters/${orgid}/${teamid}`, {
             credentials: 'include',
             method: 'PUT',
@@ -68,6 +84,7 @@ export default function Email() {
                                 <EmailsInputGroup
                                     profiles={profiles}
                                     setProfiles={setProfiles}
+                                    deleteContact={deleteContact}
                                     profile={profile}
                                     index={index}
                                 />
