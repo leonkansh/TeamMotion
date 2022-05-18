@@ -3,12 +3,9 @@ import Home from './pages/Home';
 import Tasks from './pages/Tasks';
 import Chats from './pages/Chats';
 import Teambase from './pages/Teambase';
-// import Charters from './pages/Charters';
 import Reflections from './pages/Reflections';
 import TodoCreation from './pages/TodoCreation';
 import PostCreation from './pages/PostCreation';
-// import CharterTemplate from './pages/CharterTemplate';
-// import CharterCreation from './pages/CharterCreation';
 import Meeting from './components/teambase/Meeting';
 import Goal from './components/teambase/Goal';
 import Email from './components/teambase/Email';
@@ -37,12 +34,6 @@ function App() {
                 <Route path={`${orgPrepend}/teambase/goals`} component={Goal} />
                 <Route path={`${orgPrepend}/teambase/emails`} component={Email} />
                 
-                {/* DEPRECATED
-                <Route exact path="/charters" component={Charters} />
-                <Route path="/charters/charter-templates" component={CharterTemplate} />
-                <Route path="/charters/create-charter" component={CharterCreation} />
-                */}
-
                 <Route exact path={`${orgPrepend}/reflections`} component={Reflections} />
                 <Route path={`${orgPrepend}/reflections/create-post`} component={PostCreation} />
             </Switch>
