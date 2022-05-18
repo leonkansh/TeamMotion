@@ -16,7 +16,7 @@ export default function Tasks() {
     const { orgid, teamid } = useParams();
 
     const loadAssignments = async () => {
-        await fetch(`https://tadashi-srv.herokuapp.com/api/assignments/${orgid}/team/${teamid}`, {
+      await fetch(`https://tadashi-srv.herokuapp.com/api/assignments/${orgid}/team/${teamid}`, {
                 credentials: 'include'
             })
             .then(res => res.json())
@@ -62,7 +62,7 @@ export default function Tasks() {
               <TodoList />
             </AssignmentContext.Provider>
 
-            <AddButton path={todoPath} />
+            <AddButton path={todoPath} isPurple={false}/>
             <BottomNavBar />
           </div>
         )}

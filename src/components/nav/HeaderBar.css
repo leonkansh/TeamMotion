@@ -10,6 +10,7 @@
     font-weight: 400;
     line-height: 36px;
     letter-spacing: 0em;
+    margin-top: 3vh;
 }
 
 .btn-back {
@@ -21,4 +22,12 @@
 .btn-edit-name {
     border-style: none;
     background-color: #ffffff;
+    text-align: center;
+    color: #4B369D;
+    font-family: 'Poppins';
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 36px;
+    letter-spacing: 0em;
+    border-bottom: 1px solid #DADADA;
 }

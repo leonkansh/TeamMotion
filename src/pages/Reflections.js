@@ -37,7 +37,7 @@ export default function Reflections() {
             {isLoaded && (
                 <div>
                     <HeaderBar screenname="Reflection" />
-                    <AddButton path={postPath} />
+                    <AddButton path={postPath} isPurple={true} />
                     <CharterList name="Reflection" data_list={posts} />
                     <BottomNavBar />
                 </div>

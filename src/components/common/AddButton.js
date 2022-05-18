@@ -10,19 +10,18 @@ const LinkBehavior = React.forwardRef((props, ref) => (
 export default function AddButton(props) {
     return (
         <Fab
-            color="primary"
             aria-label="add"
             sx={{
                 position: 'fixed',
                 bottom: 75,
                 right: 25,
                 fontSize: 60,
-                bgcolor: '#4B369D'
+                bgcolor: (props.isPurple) ? '#4B369D' : '#FFFFFF'
             }}
             component={RouterLink}
             to={props.path}
         >
-            <AddIcon />
+            <AddIcon sx={{ color: `${(props.isPurple) ? '#FFFFFF' : '#4B369D'}` }} />
         </Fab>
     );
 }

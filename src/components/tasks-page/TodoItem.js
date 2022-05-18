@@ -21,8 +21,13 @@ export default function TodoItem({ todo, handleStatus, handleDelete }) {
         return input;
     }
 
+    const chooseStyle = () => {
+        if (!todo.completed) return 'incompleted-todo';
+        else return 'completed-todo';
+    };
+
     return (
-        <div key={todo.id} className="todo-item">
+        <div key={todo.id} className={`todo-item ${chooseStyle()}`}>
             <input
                 className="checkbox"
                 type="radio"
@@ -43,7 +48,7 @@ export default function TodoItem({ todo, handleStatus, handleDelete }) {
                 </p>
             </div>
             <button className="btn-delete-todo" onClick={(e) => handleDelete(todo)}>
-                <TrashSimple size={22} color="#ffffff" />
+                <TrashSimple size={22} color={completed ? "#8F98FF" : "#ffffff"} />
             </button>
         </div>
     );
