@@ -1,4 +1,4 @@
-# Tadashi : Teams in Motion
+# Tadashi : The Ultimate Team Experience.
 ### **University of Washington**
 ### _Information School Capstone 2022: Team Tadashi_
 - [Server Repo and Database Structure](https://github.com/leonkansh/tadashi)
