@@ -59,14 +59,14 @@ export default function HeaderBarTeambase() {
             <House size={35} color="#383E56" />
           </Link>
           <div className="header-title">
-            <p className="p-teamname">{name}</p>
             <button
               type="button"
               className="btn-edit-name"
               onClick={() => setOpen((o) => !o)}
             >
-              <PencilSimple size={25} color="#C4C4C4" />
+              {name}
             </button>
+            <PencilSimple size={25} color="#C4C4C4" />
             <Popup open={open} closeOnDocumentClick onClose={closeModal}>
               <div className="modal">
                 <a className="close" onClick={closeModal}>
