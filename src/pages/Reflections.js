@@ -25,7 +25,6 @@ export default function Reflections() {
             })
     }
     React.useEffect(() => {
-        // fetch posts from api
         loadPosts();
     }, []);
 

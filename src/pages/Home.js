@@ -5,12 +5,6 @@ import { useHistory, useLocation } from 'react-router-dom';
 import LogoutIcon from '@mui/icons-material/Logout';
 import '@fontsource/poppins';
 
-/*
-const LinkBehavior = React.forwardRef((props, ref) => (
-    <RouterLink ref={ref} to="/" {...props} />
-));
-*/
-
 export default function Home() {
     const [self, setSelf] = useState(null);
     const [force, setForce] = useState(false);
@@ -91,7 +85,6 @@ export default function Home() {
         <div>
             <Box sx={{ typography: 'body1' }}>
                 <p>Not logged in</p>
-                {/*<Link component={RouterLink} to="/teambase">Go to your teambase</Link>*/}
             </Box>
             <button onClick={e => {
                 e.preventDefault();
